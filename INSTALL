@@ -1,0 +1,61 @@
+# ;; -*- mode: org; coding: utf-8 -*-
+
+#+TITLE: Guile-Fluidsynth README
+
+#+BEGIN_COMMENT
+
+Copyright (C) 2025
+David Pirotte (david at altosw dot be)
+
+This document is part of Guile-Fluidsynth.
+
+Copying and distribution of this file, with or without modification, are
+permitted in any medium without royalty provided the copyright notice
+and this notice are preserved.  This file is offered as-is, without any
+warranty.
+
+#+END_COMMENT
+
+* Guile-Fluidsynth
+
+Guile-Fluidsynth
+Guile bindings to the fluidsynth library
+
+** Dependencies
+
+*** Main Dependencies
+
+Guile-Fluidsynth needs the following software to run:
+
+	Autoconf	>= 2.69
+	Automake	>= 1.14
+    Makeinfo	>= 6.6
+	[[http://www.gnu.org/software/guile][Guile]] 		>= 2.0.14
+	  [allows 2.2, 3.0 (>= 3.0.7)]
+  FluidSynth	>= 2.4
+
+*** Test-Suite Dependencies
+
+Guile-Fluidsynth currently needs the following additional software to
+run its test-suite:
+          
+	[[http://www.nongnu.org/guile-lib/][Guile-Lib]]	>= 0.2.5
+
+** Install from the tarball
+
+FIXME.
+
+** Install from the source
+
+FIXME.
+
+
+* Other configure scripts options
+
+** In a terminal
+
+	./configure --help
+
+** Online documentation
+
+	https://www.gnu.org/software/autoconf/manual/autoconf.html#Running-configure-Scripts

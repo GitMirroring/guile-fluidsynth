@@ -1,0 +1,55 @@
+# ;; -*- mode: org; coding: utf-8 -*-
+
+#+TITLE: Guile-Fluidsynth README
+
+#+BEGIN_COMMENT
+
+Copyright (C) 2025
+David Pirotte (david at altosw dot be)
+
+This document is part of Guile-Fluidsynth.
+
+Copying and distribution of this file, with or without modification, are
+permitted in any medium without royalty provided the copyright notice
+and this notice are preserved.  This file is offered as-is, without any
+warranty.
+
+#+END_COMMENT
+
+
+                       Guile-Fluidsynth - README
+              ===========================================
+
+              Please send Guile-Fluidsynth bug reports to
+                          bug-guile@gnu.org
+
+
+* Guile-Fluidsynth
+
+Guile-Fluidsynth
+Guile bindings to the fluidsynth library
+
+** Description
+
+Guile-Fluidsynth
+Guile bindings to the fluidsynth library
+
+** Latest News
+
+October 2025
+
+Guile-Fluidsynth first steps
+
+Visit the NEWS file or see the [[http://git.savannah.gnu.org/cgit/guile-cv.git/tree/NEWS][News]] page for the list of visible changes
+since the last release, as well as older news.
+
+** Savannah
+
+Guile-Fluidsynth also has a [[https://savannah.gnu.org/][Savannah]] project page, [[https://savannah.nongnu.org/projects/guile-fluidsynth][here]].
+
+** License
+
+GNU Guile-CV is a free software, distributed under the terms of the GNU
+General Public License GPLv3 or higher. You must be aware there is no
+warranty whatsoever for GNU Guile-CV. This is described in full in the
+license.

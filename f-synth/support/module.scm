@@ -1,0 +1,60 @@
+;; -*- mode: scheme; coding: utf-8 -*-
+
+;;;;
+;;;; Copyright (C) 2025
+;;;; David Pirotte (david at altosw dot be)
+
+;;;; This file is part of Guile-Fluidsynth
+
+;;;; Guile-Fluidsynth is free software; you can redistribute it and/or
+;;;; modify it under the terms of the GNU General Public License as
+;;;; published by the Free Software Foundation; either version 3 of the
+;;;; License, or (at your option) any later version.
+
+;;;; Guile-Fluidsynth is distributed in the hope that it will be useful,
+;;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;;;; General Public License for more details.
+
+;;;; You should have received a copy of the GNU General Public License
+;;;; along with Guile-Fluidsynth.  If not, see
+;;;; <https://www.gnu.org/licenses/gpl.html>.
+;;;;
+
+;;; Commentary:
+
+;;; Code:
+
+
+(define-module (f-synth support module)
+  #:export (re-export-public-interface
+            re-export-and-replace!
+            re-export-and-replace-names!))
+
+
+(define-macro (re-export-public-interface . args)
+  "Re-export the public interface of a module or modules. Invoked as
+@code{(re-export-public-interface (mod1) (mod2)...)}."
+  (if (null? args)
+      '(if #f #f)
+      `(begin
+	 ,@(map (lambda (mod)
+		  (or (list? mod)
+		      (error "Invalid module specification" mod))
+		  `(module-use! (module-public-interface (current-module))
+				(resolve-interface ',mod)))
+		args))))
+
+(define (re-export-and-replace-names! module names)
+  (cond-expand
+    (guile-3.0
+     (module-re-export! module names #:replace? #t))
+    (guile-2.2
+     (module-re-export! module names))
+    (guile-2
+     (module-re-export! module names))
+    (else
+     (module-re-export! module names #:replace? #t))))
+
+(define-syntax-rule (re-export-and-replace! module name ...)
+  (re-export-and-replace-names! module '(name ...)))

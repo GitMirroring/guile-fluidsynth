@@ -1,0 +1,101 @@
+#!/bin/sh
+
+####
+#### Copyright (C) 2016 - 2021
+#### Free Software Foundation, Inc.
+
+#### This file is part of GNU Guile-CV.
+
+#### GNU Guile-CV is free software; you can redistribute it and/or
+#### modify it under the terms of the GNU General Public License as
+#### published by the Free Software Foundation; either version 3 of the
+#### License, or (at your option) any later version.
+
+#### GNU Guile-CV is distributed in the hope that it will be useful, but
+#### WITHOUT ANY WARRANTY; without even the implied warranty of
+#### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#### General Public License for more details.
+
+#### You should have received a copy of the GNU General Public License
+#### along with GNU Guile-CV.  If not, see
+#### <https://www.gnu.org/licenses/gpl.html>.
+####
+
+
+abs_top_srcdir="@abs_top_srcdir@"
+abs_top_builddir="@abs_top_builddir@"
+
+[ x"$abs_top_srcdir"   = x -o ! -d "$abs_top_srcdir" -o \
+  x"$abs_top_builddir" = x -o ! -d "$abs_top_builddir" ] && {
+    echo $0: bad environment
+    echo abs_top_srcdir=$abs_top_srcdir
+    echo abs_top_builddir=$abs_top_builddir
+    exit 1
+}
+
+
+###
+### GUILE_LOAD_PATH
+###
+
+if [ x"$GUILE_LOAD_PATH" = x ]
+then
+    GUILE_LOAD_PATH="${abs_top_srcdir}"
+    if test "${abs_top_srcdir}" != "${abs_top_builddir}"; then
+        GUILE_LOAD_PATH="${abs_top_builddir}:$GUILE_LOAD_PATH"
+    fi
+else
+    GUILE_LOAD_PATH="${abs_top_srcdir}:$GUILE_LOAD_PATH"
+    if test "${abs_top_srcdir}" != "${abs_top_builddir}"; then
+        GUILE_LOAD_PATH="${abs_top_builddir}:$GUILE_LOAD_PATH"
+    fi
+fi
+## echo $GUILE_LOAD_PATH
+export GUILE_LOAD_PATH
+
+
+###
+### GUILE_LOAD_COMPILED_PATH
+###
+
+if [ x"$GUILE_LOAD_COMPILED_PATH" = x ]
+then
+    GUILE_LOAD_COMPILED_PATH="${abs_top_srcdir}"
+    if test "${abs_top_srcdir}" != "${abs_top_builddir}"; then
+        GUILE_LOAD_COMPILED_PATH="${abs_top_builddir}:$GUILE_LOAD_COMPILED_PATH"
+    fi
+else
+    GUILE_LOAD_COMPILED_PATH="${abs_top_srcdir}:$GUILE_LOAD_COMPILED_PATH"
+    if test "${abs_top_srcdir}" != "${abs_top_builddir}"; then
+        GUILE_LOAD_COMPILED_PATH="${abs_top_builddir}:$GUILE_LOAD_COMPILED_PATH"
+    fi
+fi
+
+## echo $GUILE_LOAD_COMPILED_PATH
+export GUILE_LOAD_COMPILED_PATH
+
+
+###
+### LTDL_LIBRARY_PATH
+###
+
+if [ x"$LTDL_LIBRARY_PATH" = x ]
+then
+    LTDL_LIBRARY_PATH="${abs_top_srcdir}/libguile-cv:${abs_top_srcdir}/libguile-cv/.libs"
+    if test "${abs_top_srcdir}" != "${abs_top_builddir}"; then
+        LTDL_LIBRARY_PATH="${abs_top_builddir}/libguile-cv:${abs_top_builddir}/libguile-cv/.libs:$LTDL_LIBRARY_PATH"
+    fi
+else
+    LTDL_LIBRARY_PATH="${abs_top_srcdir}/libguile-cv:${abs_top_srcdir}/libguile-cv/.libs:$LTDL_LIBRARY_PATH"
+    if test "${abs_top_srcdir}" != "${abs_top_builddir}"; then
+        LTDL_LIBRARY_PATH="${abs_top_builddir}/libguile-cv:${abs_top_builddir}/libguile-cv/.libs:$LTDL_LIBRARY_PATH"
+    fi
+fi
+## echo $LTDL_LIBRARY_PATH
+export LTDL_LIBRARY_PATH
+
+TEST_IMAGES_PATH=$abs_top_srcdir/doc/images
+export TEST_IMAGES_PATH
+
+
+exec "$@"

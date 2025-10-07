@@ -1,0 +1,34 @@
+# ;; -*- mode: org; coding: utf-8 -*-
+
+#+TITLE: Guile-Fluidsynth README
+
+#+BEGIN_COMMENT
+
+Copyright (C) 2025
+David Pirotte (david at altosw dot be)
+
+This document is part of Guile-Fluidsynth.
+
+Copying and distribution of this file, with or without modification, are
+permitted in any medium without royalty provided the copyright notice
+and this notice are preserved.  This file is offered as-is, without any
+warranty.
+
+#+END_COMMENT
+
+
+           Guile-Fluidsynth - History of user-visible changes
+              ===========================================
+
+              Please send Guile-Fluidsynth bug reports to
+                          bug-guile@gnu.org
+
+
+* Latest News
+
+** October 2025
+
+Guile-Fluidsynth first steps
+
+
+* Older News

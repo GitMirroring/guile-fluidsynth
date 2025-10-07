@@ -1,0 +1,149 @@
+dnl -*- Autoconf -*-
+dnl
+dnl   configuration script for Guile-Fluidsynth
+dnl   Process this file with autoconf to produce configure.
+dnl
+
+define(GUILE_FLUIDSYNTH_CONFIGURE_COPYRIGHT,[[
+
+Copyright (C) 2025
+David Pirotte (david at altosw dot be)
+
+This file is part of Guile-Fluidsynth
+
+Guile-Fluidsynth is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 3 of the
+License, or (at your option) any later version.
+
+Guile-Fluidsynth is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Guile-Fluidsynth.  If not, see
+<https://www.gnu.org/licenses/gpl.html>.
+
+]])
+
+AC_PREREQ(2.69)
+
+AC_INIT(
+  [guile-fluidsynth],
+  [0.1.0],
+  [bug-guile@gnu.org])
+
+AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_MACRO_DIR([m4])
+dnl Use `serial-tests' so the output `check-guile' is not hidden
+dnl (`parallel-tests' is the default in Automake 1.13.)
+dnl `serial-tests' was introduced in Automake 1.12.
+AM_INIT_AUTOMAKE([1.14 gnu -Wall -Werror -Wno-portability -Wno-syntax \
+  color-tests serial-tests foreign])
+AM_MAINTAINER_MODE([enable])
+AM_SILENT_RULES([yes])
+
+AC_PROG_CC
+LT_INIT([disable-static])
+
+AC_COPYRIGHT(GUILE_FLUIDSYNTH_CONFIGURE_COPYRIGHT)
+AC_CONFIG_SRCDIR([f-synth])
+
+MAKEINFO_PROG([6.6])
+
+
+GUILE_PKG([3.0 2.2 2.0])
+GUILE_PROGS([2.0.14])
+GUILE3_PROGS([3.0.7])
+GUILE_SITE_DIR
+GUILE_GLOBAL_SITE_DIR
+GUILE_FLAGS
+PKG_INSTALLDIR
+
+
+dnl This argument is passed to guild; it ensures cross-compiling uses
+dnl the right target.
+if test -n "$host_alias"; then
+   AC_SUBST([GUILE_TARGET], [--target=$host_alias])
+fi
+
+
+AC_ARG_WITH(
+  [guile-site],
+  [AS_HELP_STRING(
+     [--with-guile-site],
+     [install source modules and compiled files using Guile's site and site-ccache dirs])],
+  [case "x$withval" in
+     xyes)
+     guile_site="yes";;
+     *)
+     guile_site="no";;
+   esac],
+  [guile_site="no"])
+AC_SUBST([guile_site])
+
+if test "x$guile_site" = "xyes"; then
+   SITEDIR="$GUILE_SITE";
+   SITECCACHEDIR="$GUILE_SITE_CCACHE";
+else
+   SITEDIR="$datadir/guile-fluidsynth";
+   SITECCACHEDIR="$libdir/guile-fluidsynth/guile/$GUILE_EFFECTIVE_VERSION/site-ccache";
+fi
+AC_SUBST([SITEDIR])
+AC_SUBST([SITECCACHEDIR])
+
+
+PKG_CHECK_MODULES(FLUIDSYNTH, fluidsynth)
+
+# Although guile itself depends on libffi, we make this call to get
+# FFI_CFLAGS and FFI_LIBS to be defined, used by libtonic.
+PKG_CHECK_MODULES(FFI, libffi >= 3.3.0)
+
+
+
+AC_CONFIG_FILES(
+  [pre-inst-env],
+  [chmod +x pre-inst-env])
+
+AC_CONFIG_FILES([
+  meta/guile-fluidsynth-1.0.pc
+  Makefile
+])
+
+#AC_CONFIG_FILES([
+#  meta/guile-cv-1.0.pc
+#  Makefile
+#  libguile-cv/Makefile
+#  doc/Makefile
+#  test-suite/Makefile
+#])
+
+AC_OUTPUT
+
+AC_MSG_NOTICE(
+  []
+  []
+  [prefix=$prefix]
+  [exec_prefix=$exec_prefix]
+  [libdir=$libdir]
+  [datarootdir=$datarootdir]
+  [datadir=$datadir]
+  []
+  [--with-guile-site="$guile_site"]
+  []
+  [sitedir (source code): ${SITEDIR}]
+  [siteccachedir (compiled modules): ${SITECCACHEDIR}]
+  [])
+
+if test "x$guile_site" = "xno"; then
+  AC_MSG_WARN(
+    []
+    []
+    [Since --with-guile-site="no", sitedir and siteccachedir differ from]
+    [the one used by Guile itself. You have to augment both Guile's %load-path]
+    [and %load-compiled-path variables before to use Guile-Fluidsynth modules (see]
+    ['Environment Variables' and 'Load Paths' in the Guile Reference Manual).]
+    []
+    [Otherwise, consider using --with-guile-site])
+fi
