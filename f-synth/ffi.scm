@@ -26,33 +26,14 @@
 ;;; Code:
 
 
-(define-module (f-synth)
-  #:use-module (oop goops)
-  #:use-module (oop goops describe)
-  #:use-module (system foreign)
-  #:use-module (rnrs bytevectors)
-  #:use-module (ice-9 match)
-  #:use-module (ice-9 receive)
-  #:use-module (srfi srfi-1)
-  #:use-module (srfi srfi-4)
+(define-module (f-synth ffi)
   #:use-module (f-synth support module)
-  #:use-module (f-synth ffi)
-
-  #:duplicates (merge-generics
-		replace
-		warn-override-core
-		warn
-		last))
+  #:use-module (f-synth ffi types)
+  #:use-module (f-synth ffi settings)
+  #:use-module (f-synth ffi synth))
 
 
 (eval-when (compile load eval)
-  (re-export-public-interface (oop goops)
-                              (oop goops describe)
-			      (system foreign)
-			      (rnrs bytevectors)
-			      (ice-9 match)
-                              (ice-9 receive)
-			      (srfi srfi-1)
-			      (srfi srfi-4)
-                              (f-synth support module)
-                              (f-synth ffi)))
+  (re-export-public-interface (f-synth ffi types)
+                              (f-synth ffi settings)
+                              (f-synth ffi synth)))

@@ -94,7 +94,7 @@ AC_SUBST([SITEDIR])
 AC_SUBST([SITECCACHEDIR])
 
 
-PKG_CHECK_MODULES(FLUIDSYNTH, fluidsynth)
+PKG_CHECK_MODULES(FLUIDSYNTH, fluidsynth >= 2.4)
 
 # Although guile itself depends on libffi, we make this call to get
 # FFI_CFLAGS and FFI_LIBS to be defined, used by libtonic.
