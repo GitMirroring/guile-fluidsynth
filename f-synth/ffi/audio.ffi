@@ -26,16 +26,8 @@
 ;;; Code:
 
 
-(define-module (f-synth ffi)
-  #:use-module (f-synth support module)
-  #:use-module (f-synth ffi types)
-  #:use-module (f-synth ffi settings)
-  #:use-module (f-synth ffi synth)
-  #:use-module (f-synth ffi audio))
-
-
-(eval-when (compile load eval)
-  (re-export-public-interface (f-synth ffi types)
-                              (f-synth ffi settings)
-                              (f-synth ffi synth)
-                              (f-synth ffi audio)))
+(define-ffi-module (f-synth ffi audio)
+  #:pkg-config "fluidsynth"
+  #:include    '("fluidsynth.h")
+  #:inc-filter (lambda (file path)
+               (string-contains path "fluidsynth/audio.h" 0)))

@@ -32,6 +32,7 @@ SOURCES = \
 	f-synth/ffi/types.scm		\
 	f-synth/ffi/settings.scm	\
 	f-synth/ffi/synth.scm		\
+	f-synth/ffi/audio.scm		\
 	f-synth/ffi.scm			\
 	f-synth.scm
 
