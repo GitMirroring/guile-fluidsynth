@@ -35,7 +35,7 @@
   #:use-module (ice-9 receive)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-4)
-  #:use-module (f-synth support module)
+  #:use-module (f-synth support)
   #:use-module (f-synth ffi)
 
   #:duplicates (merge-generics
@@ -54,5 +54,5 @@
                               (ice-9 receive)
 			      (srfi srfi-1)
 			      (srfi srfi-4)
-                              (f-synth support module)
+                              (f-synth support)
                               (f-synth ffi)))
