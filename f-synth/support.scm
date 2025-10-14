@@ -27,8 +27,12 @@
 
 
 (define-module (f-synth support)
-  #:use-module (f-synth support module))
+  #:use-module (f-synth support module)
+  #:use-module (f-synth support goops)
+  #:use-module (f-synth support g-export))
 
 
 (eval-when (compile load eval)
-  (re-export-public-interface (f-synth support module)))
+  (re-export-public-interface (f-synth support module)
+                               (f-synth support goops)
+                               (f-synth support g-export)))

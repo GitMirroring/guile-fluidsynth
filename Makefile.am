@@ -28,12 +28,15 @@ pkgconfig_DATA=meta/guile-fluidsynth-1.0.pc
 
 SOURCES = \
 	f-synth/support/module.scm	\
+	f-synth/support/goops.scm	\
+	f-synth/support/g-export.scm	\
 	f-synth/support.scm		\
 	f-synth/ffi/types.scm		\
 	f-synth/ffi/settings.scm	\
 	f-synth/ffi/synth.scm		\
 	f-synth/ffi/audio.scm		\
 	f-synth/ffi.scm			\
+	f-synth/synth.scm		\
 	f-synth.scm
 
 NOCOMP_SOURCES= \

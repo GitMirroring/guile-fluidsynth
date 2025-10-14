@@ -26,35 +26,30 @@
 ;;; Code:
 
 
-(define-module (f-synth)
-  #:use-module (oop goops)
-  #:use-module (oop goops describe)
-  #:use-module (system foreign)
-  #:use-module (rnrs bytevectors)
+(define-module (f-synth support goops)
   #:use-module (ice-9 match)
-  #:use-module (ice-9 receive)
-  #:use-module (srfi srfi-1)
-  #:use-module (srfi srfi-4)
-  #:use-module (f-synth support)
-  #:use-module (f-synth ffi)
-  #:use-module (f-synth synth)
+  #:use-module (oop goops)
+  ;; #:use-module (g-golf support g-export)
 
   #:duplicates (merge-generics
 		replace
 		warn-override-core
 		warn
-		last))
+		last)
+
+  #:export (mslot-set!))
 
 
-(eval-when (compile load eval)
-  (re-export-public-interface (oop goops)
-                              (oop goops describe)
-			      (system foreign)
-			      (rnrs bytevectors)
-			      (ice-9 match)
-                              (ice-9 receive)
-			      (srfi srfi-1)
-			      (srfi srfi-4)
-                              (f-synth support)
-                              (f-synth ffi)
-                              (f-synth synth)))
+#;(g-export )
+
+
+(define (mslot-set! self . args)
+  (if (even? (length args))
+      (let loop ((args args))
+        (match args
+          (()
+           (values))
+          ((name val . rest)
+           (slot-set! self name val)
+           (loop rest))))
+      (error "Wrong number of arguments: " args)))
