@@ -44,7 +44,9 @@
   #:export (<synth>))
 
 
-(g-export !gain)
+(g-export !settings
+          !synth
+          !gain)
 
 
 (define-class <synth> ()
