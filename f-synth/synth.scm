@@ -46,12 +46,20 @@
 
 (g-export !settings
           !synth
-          !gain)
+          !audio-driver
+          !sfid
+          !gain
+
+          sfload
+          noteon
+          noteoff)
 
 
 (define-class <synth> ()
   (settings #:accessor !settings)
   (synth #:accessor !synth)
+  (audio-driver #:accessor !audio-driver)
+  (sfid  #:accessor !sfid)
   (gain #:accessor !gain
         #:allocation #:virtual
         #:slot-ref (lambda (obj)
@@ -65,11 +73,27 @@
 
 (define-method (initialize (self <synth>) initargs)
   (next-method)
-  (let* ((gain (get-keyword #:gain initargs #f))
+  (let* ((gain (get-keyword #:gain initargs 0.5))
          (settings (new_fluid_settings))
-         (synth (new_fluid_synth settings)))
+         (synth (new_fluid_synth settings))
+         (sfid (fluid_synth_sfload synth "/usr/share/sounds/sf2/FluidR3_GM.sf2" 1))
+         (audio-driver (new_fluid_audio_driver settings synth)))
     (mslot-set! self
                 'settings settings
-                'synth synth)
-    (when gain
-       (fluid_settings_setnum settings "synth.gain" gain))))
+                'synth synth
+                'audio-driver audio-driver
+                'sfid sfid)
+    (fluid_settings_setnum settings "synth.gain" gain)))
+
+(define-method (sfload (self <synth>) name preset?)
+  (fluid_synth_sfload (!synth self) name (scm->c preset? 'boolean)))
+
+(define-method (noteon (self <synth>) chan key vel)
+  "CHAN > 0, KEY and VEL in the [0 127] range"
+  (fluid_synth_noteon (!synth self) chan key vel)
+  (values))
+
+(define-method (noteoff (self <synth>) chan key)
+  "CHAN > 0, KEY in the [0 127] range"
+  (fluid_synth_noteoff (!synth self) chan key)
+  (values))

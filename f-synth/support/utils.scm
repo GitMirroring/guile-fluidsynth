@@ -26,15 +26,13 @@
 ;;; Code:
 
 
-(define-module (f-synth support)
-  #:use-module (f-synth support module)
-  #:use-module (f-synth support goops)
-  #:use-module (f-synth support g-export)
-  #:use-module (f-synth support utils))
+(define-module (f-synth support utils)
+  #:export (scm->c))
 
 
-(eval-when (compile load eval)
-  (re-export-public-interface (f-synth support module)
-                               (f-synth support goops)
-                               (f-synth support g-export)
-                               (f-synth support utils)))
+(define (scm->c val type)
+  (case type
+    ((boolean) (scm->c-boolean val))))
+
+(define (scm->c-boolean val)
+  (if val 1 0))
