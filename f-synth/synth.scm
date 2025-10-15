@@ -53,10 +53,9 @@
   (gain #:accessor !gain
         #:allocation #:virtual
         #:slot-ref (lambda (obj)
-                     (let ((gain (make-cdata (cbase 'double))))
-                       (fluid_settings_getnum (!settings obj)
-                                              "synth.gain"
-                                              (cdata& gain))
+                     (let ((settings (!settings obj))
+                           (gain (make-cdata (cbase 'double))))
+                       (fluid_settings_getnum settings "synth.gain" (cdata& gain))
                        (cdata-ref gain)))
         #:slot-set! (lambda (obj val)
                       (fluid_settings_setnum (!settings obj) "synth.gain" val)
