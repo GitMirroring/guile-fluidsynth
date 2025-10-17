@@ -53,7 +53,8 @@
           sfload
           noteon
           noteoff
-          program-select)
+          program-select
+          get-sfont-by-id)
 
 
 (define-class <synth> ()
@@ -102,3 +103,7 @@
 (define-method (program-select (self <synth>) chan sfid bank preset)
   (fluid_synth_program_select (!synth self) chan sfid bank preset)
   (values))
+
+(define-method* (get-sfont-by-id (self <synth>)
+                                 #:optional (sfid (!sfid self)))
+  (fluid_synth_get_sfont_by_id (!synth self) sfid))
