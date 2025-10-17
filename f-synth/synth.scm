@@ -52,7 +52,8 @@
 
           sfload
           noteon
-          noteoff)
+          noteoff
+          program-select)
 
 
 (define-class <synth> ()
@@ -96,4 +97,8 @@
 (define-method (noteoff (self <synth>) chan key)
   "CHAN > 0, KEY in the [0 127] range"
   (fluid_synth_noteoff (!synth self) chan key)
+  (values))
+
+(define-method (program-select (self <synth>) chan sfid bank preset)
+  (fluid_synth_program_select (!synth self) chan sfid bank preset)
   (values))
