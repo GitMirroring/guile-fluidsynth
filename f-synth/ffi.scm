@@ -31,11 +31,13 @@
   #:use-module (f-synth ffi types)
   #:use-module (f-synth ffi settings)
   #:use-module (f-synth ffi synth)
-  #:use-module (f-synth ffi audio))
+  #:use-module (f-synth ffi audio)
+  #:use-module (f-synth ffi sfont))
 
 
 (eval-when (compile load eval)
   (re-export-public-interface (f-synth ffi types)
                               (f-synth ffi settings)
                               (f-synth ffi synth)
-                              (f-synth ffi audio)))
+                              (f-synth ffi audio)
+                              (f-synth ffi sfont)))
