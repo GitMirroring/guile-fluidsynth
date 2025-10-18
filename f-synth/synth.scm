@@ -54,7 +54,9 @@
           noteon
           noteoff
           program-select
-          get-sfont-by-id)
+          get-sfont-by-id
+
+          get-sfont-programs)
 
 
 (define-class <synth> ()
@@ -107,3 +109,20 @@
 (define-method* (get-sfont-by-id (self <synth>)
                                  #:optional (sfid (!sfid self)))
   (fluid_synth_get_sfont_by_id (!synth self) sfid))
+
+(define-method* (get-sfont-programs (self <synth>)
+                                    #:optional (sfid (!sfid self)))
+  (let ((sfont (get-sfont-by-id self sfid))
+        (offset (fluid_synth_get_bank_offset (!synth self) sfid)))
+    (fluid_sfont_iteration_start sfont)
+    (let loop ((iter (fluid_sfont_iteration_next sfont))
+               (result '()))
+      (if (null-pointer? iter)
+          (reverse result)
+          (let ((bank-nb (+ offset
+                            (fluid_preset_get_banknum iter)))
+                (preset-nb (fluid_preset_get_num iter))
+                (name (pointer->string (fluid_preset_get_name iter))))
+            (loop (fluid_sfont_iteration_next sfont)
+                  (cons (list name bank-nb preset-nb)
+                        result)))))))
