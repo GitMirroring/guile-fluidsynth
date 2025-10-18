@@ -27,7 +27,8 @@
 
 
 (define-module (f-synth support utils)
-  #:export (scm->c))
+  #:export (scm->c
+            dimfi))
 
 
 (define (scm->c val type)
@@ -36,3 +37,20 @@
 
 (define (scm->c-boolean val)
   (if val 1 0))
+
+(define (dimfi . items)
+  ;; if the first item is a port, we use it.
+  (if (port? (car items))
+      (let ((p (car items)))
+	(display ";; " p)
+	(for-each (lambda (item)
+		    (display item p) (display " " p))
+	    (cdr items))
+	(display "\n" p))
+      (begin
+	(display ";; ")
+	(for-each (lambda (item)
+		    (display item) (display " " ))
+	    items)
+	(display "\n")))
+  (car (last-pair items)))
