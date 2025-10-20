@@ -23,7 +23,7 @@ Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public
 License along with Guile-Fluidsynth.  If not, see
-<https://www.gnu.org/licenses/gpl.html>.
+<https://www.gnu.org/licenses/lgpl.html>.
 
 ]])
 
@@ -109,6 +109,7 @@ AC_CONFIG_FILES(
 AC_CONFIG_FILES([
   meta/guile-fluidsynth-1.0.pc
   Makefile
+  doc/Makefile
 ])
 
 #AC_CONFIG_FILES([
