@@ -1,0 +1,56 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+@set TITLE Guile-Fluidsynth Reference Manual
+
+@set MANUAL-REVISION 1
+
+@set UGUILE http://www.gnu.org/software/guile
+@set UGUILE-LIB http://www.nongnu.org/guile-lib
+@set UGUILE-LISTINFO https://lists.gnu.org/mailman/listinfo/
+
+@set GUILE-USER @email{guile-user@@gnu.org}
+@set GUILE-DEVEL @email{guile-devel@@gnu.org}
+
+@set USCHEME http://schemers.org
+
+@set UGUILE-FLUIDSYNTH http://www.nongnu.org/guile-fluidsynth
+@set UGUILE-FLUIDSYNTH-SAVANNAH http://savannah.nongnu.org/projects/guile-fluidsynth
+@set UGUILE-FLUIDSYNTH-RELEASES http://download.savannah.gnu.org/releases/guile-fluidsynth
+@set UGUILE-FLUIDSYNTH-LATEST http://download.savannah.gnu.org/releases/guile-fluidsynth/guile-fluidsynth-@value{VERSION}.tar.gz
+@set UGUILE-FLUIDSYNTH-GIT https://cgit.git.savannah.gnu.org/cgit/guile-fluidsynth.git
+
+@set GUILE-FLUIDSYNTH-BUGS @email{bugs-guile@@gnu.org}
+
+@set UGUILE-FLUIDSYNTH-LISTINFO FIXME
+@set UGUILE-FLUIDSYNTH-BUGS-TRACKER FIXME
+@set UGUILE-FLUIDSYNTH-BUGS-LISTINFO https://lists.gnu.org/mailman/listinfo/bug-guile
+
+@set UDEBBUGS-SERVER-CONTROL https://debbugs.gnu.org/server-control.html
+
+@set UEMACS https://www.gnu.org/software/emacs
+@set UGEISER http://www.nongnu.org/geiser
+
+@set UGIT https://git-scm.com/
+
+@set UGUILE-ENV-VARS https://www.gnu.org/software/guile/manual/guile.html#Environment-Variables
+@set UGUILE-LOAD-PATH https://www.gnu.org/software/guile/manual/guile.html#Load-Paths
+
+
+@c
+@c GNU
+@c
+
+@set UGNU-PHILOSOPHY https://gnu.org/philosophy/free-sw.html
+@set UGNU-EVALUATION https://www.gnu.org/help/evaluation.html
+@set UGNU-HELP https://www.gnu.org/help/help.html
+
+
+@c
+@c FLUIDSYNTH
+@c
+
+@set UFLUIDSYNTH https://github.com/FluidSynth/fluidsynth
+

@@ -1,0 +1,64 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@node Preface
+@unnumbered Preface
+
+This manual describes how to use Guile-Fluidsynth.  It relates
+particularly to Guile-Fluidsynth version @value{VERSION}.
+
+@menu
+* Contributors to this manual::
+* Guile-Fluidsynth License::
+@end menu
+
+
+@node Contributors to this manual
+@unnumberedsec Contributors to this Manual
+
+Like Guile-Fluidsynth itself, the Guile-Fluidsynth reference manual is a
+living entity. Right now, the contributor to this manual is:
+
+@itemize @bullet
+@item David Pirotte
+@end itemize
+
+who is also the author and maintainer of Guile-Fluidsynth.
+
+You are most welcome to join and help.  Visit
+@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} web site to find out
+how to get involved.
+
+
+@node Guile-Fluidsynth License
+@unnumberedsec The Guile-Fluidsynth License
+@cindex Copying
+@cindex LGPL
+@cindex License
+
+Guile-Fluidsynth is Free Software. Guile-Fluidsynth is copyrighted, not
+public domain, and there are restrictions on its distribution or
+redistribution:
+
+@itemize @bullet
+@item
+Guile-Fluidsynth and supporting files are published under the terms of
+the GNU Lesser General Public License version 2.1 or later.  See the
+file @file{LICENSE}.
+
+@item
+This manual is published under the terms of the GNU Free Documentation
+License (@pxref{GNU Free Documentation License}).
+@end itemize
+
+You must be aware there is no warranty whatsoever for Guile-Fluidsynth.
+This is described in full in the license.
+
+
+@c Local Variables:
+@c TeX-master: "guile-fluidsynth.texi"
+@c ispell-local-dictionary: "american"
+@c End:

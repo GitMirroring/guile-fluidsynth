@@ -1,0 +1,245 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@node Introduction
+@c @chapter Introduction
+@unnumbered I. Introduction
+
+@menu
+* About Guile-Fluidsynth::
+@c * Description::
+@c * What else::
+@c * Savannah::
+* Obtaining and Installing Guile-Fluidsynth::
+* Contact Information::
+* Reporting Bugs::
+@end menu
+
+
+@node About Guile-Fluidsynth
+@section About Guile-Fluidsynth
+
+@strong{Guile-Fluidsynth} @*
+@uref{@value{UGUILE}, Guile} bindings to the @uref{@value{UFLUIDSYNTH},
+fluidsynth} library
+
+
+@c @subheading Description
+
+@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth},
+@uref{@value{UGUILE}, Guile} bindings to the @uref{@value{UFLUIDSYNTH},
+fluidsynth} library.
+
+
+@subheading Savannah
+
+@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} also has a
+@uref{@value{UGUILE-FLUIDSYNTH-SAVANNAH}, Savannah project page}.
+
+
+@node Obtaining and Installing Guile-Fluidsynth
+@section Obtaining and Installing Guile-Fluidsynth
+
+@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} can be obtained from
+the following archive @uref{@value{UGUILE-FLUIDSYNTH-RELEASES}, site}.
+The file will be named guile-fluidsynth-version.tar.gz. The current
+version is @value{VERSION}, so the file you should grab is:
+
+@indentedblock
+@uref{@value{UGUILE-FLUIDSYNTH-LATEST}}
+@end indentedblock
+
+@subheading Dependencies
+
+@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} needs the following
+software to run:
+
+@itemize @bullet
+
+@item
+Autoconf >= 2.69
+@item
+Automake >= 1.14
+@item
+Makeinfo >= 6.6
+@item
+@uref{@value{UGUILE}, Guile} >= 2.0.14 @*
+@ @  [allows 2.2, 3.0 (>= 3.0.7)]
+@item
+@c @uref{@value{UGUILE-LIB}, Guile-Lib} >= 0.2.5
+@item 
+@uref{@value{UFLUIDSYNTH}, Fluidsynth} >= 2.4
+
+@end itemize
+
+
+@subheading Install from the tarball
+
+Assuming you have satisfied the dependencies, open a terminal and
+proceed with the following steps:
+
+@example
+cd <download-path>
+tar zxf guile-fluidsynth-@value{VERSION}.tar.gz
+cd guile-fluidsynth-@value{VERSION}
+./configure [--prefix=/your/prefix] [--with-guile-site]
+make
+make install
+@end example
+
+Happy @uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth}!
+
+
+@subheading Install from the source
+
+@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} uses
+@uref{@value{UGIT}, Git} for revision control, hosted on
+@uref{@value{UGUILE-FLUIDSYNTH-SAVANNAH}, Savannah}, you may browse the
+sources repository @uref{@value{UGUILE-FLUIDSYNTH-GIT}, here}.
+
+There are currently 2 [important] branches: @code{master} and
+@code{devel}. @uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} stable
+branch is master, developments occur on the devel branch.
+
+So, to grab, compile and install from the source, open a terminal and:
+
+@example
+git clone git://git.savannah.gnu.org/guile-fluidsynth.git
+cd guile-fluidsynth
+./autogen.sh
+./configure [--prefix=/your/prefix] [--with-guile-site]
+make
+make install
+@end example
+
+The above steps ensure you're using @uref{@value{UGUILE-FLUIDSYNTH},
+Guile-Fluidsynth} bleeding edge @code{stable} version. If you wish to
+participate to developments, checkout the @code{devel} branch:
+
+@example
+git checkout devel
+@end example
+
+Happy @code{hacking!}
+
+@*
+@strong{Notes:}
+
+
+@enumerate
+
+@item
+The @code{default} and @code{--prefix} installation locations for source
+modules and compiled files (in the absence of
+@code{--with-guile-site}) are:
+
+@example
+$(datadir)/guile-fluidsynth
+$(libdir)/guile-fluidsynth/guile/$(GUILE_EFFECTIVE_VERSION)/site-ccache
+@end example
+
+If you pass @code{--with-guile-site}, these locations become the Guile
+site and site-ccache directories, respectively.
+
+The configure step reports these locations as the content of the
+@code{sitedir} and @code{siteccachedir} variables, respectivelly the
+source modules and compiled files install locations. After installation,
+you may consult these variables using pkg-config:
+
+@example
+pkg-config guile-fluidsynth-1.0 --variable=sitedir
+pkg-config guile-fluidsynth-1.0 --variable=siteccachedir
+@end example
+
+You will need - unless you have used @code{--with-guile-site}, or unless
+these locations are already 'known' by Guile - to define or augment your
+@code{GUILE_LOAD_PATH} and @code{GUILE_COMPILED_PATH} environment
+variables with these locations, respectively (or @code{%load-path} and
+@code{%load-compiled-path} at run time if you prefer@footnote{In this
+case, you may as well decide to either alter your @file{$HOME/.guile}
+personal file, or, if you are working in a mult-user environmet, you may
+also opt for a global configuration. In this case, the file must be
+named @file{init.scm} and placed it here (evaluate the following
+expression in a terminal): @code{guile -c "(display
+(%site-dir))(newline)"}.}  (See @uref{@value{UGUILE-ENV-VARS},
+Environment Variables} and @uref{@value{UGUILE-LOAD-PATH}, Load Path} in
+the Guile Reference Manual).
+@c@ifhtml
+@c@*@*
+@c@end ifhtml
+
+@item
+To install Guile-Fluidsynth, you must have write permissions to the
+default or @code{$(prefix)} directory and its subdirs, as well as to
+both Guile's site and site-ccache directories if
+@code{--with-guile-site} was passed.
+@ifhtml
+@*@*
+@end ifhtml
+
+
+@item
+Like for any other GNU Tool Chain compatible software, you may install
+the documentation locally using @code{make install-info}, @code{make
+install-html} and/or @code{make install-pdf}.
+@ifhtml
+@*@*
+@end ifhtml
+
+
+@c @item
+@c Last but not least :), Guile-Fluidsynth comes with a @code{test-suite}, which we
+@c recommend you to run (especially before @ref{Reporting Bugs}):
+
+@c @example
+@c make check
+@c @end example
+@end enumerate
+
+
+@node Contact Information
+@section Contact Information
+
+
+@subheading Mailing lists
+
+Guile-Fluidsynth uses the following mailing list:
+
+@itemize @bullet
+@item @email{guile-user@@gnu.org}
+@c@ifhtml
+@c@*@*
+@c@end ifhtml
+@end itemize
+
+Please use @samp{F-Synth - } to preceed the subject line of
+Guile-Fluidsynth related emails, thanks!
+
+You can (un)subscribe to the mailing lists by following instructions on
+their respective @uref{@value{UGUILE-LISTINFO}, list information page}.
+
+
+@subheading IRC
+
+Most of the time you can find me on irc, channel @emph{#guile},
+@emph{#guix} and @emph{#scheme} on @emph{irc.libera.chat}, under the
+nickname @emph{daviid}.
+
+
+@node Reporting Bugs
+@section Reporting Bugs
+
+Guile-Fluidsynth uses the following bug reports mailing list:
+
+@itemize @bullet
+@item @value{GUILE-FLUIDSYNTH-BUGS}
+@end itemize
+
+You can (un)subscribe to the bugs report list by following instructions
+on the @uref{@value{UGUILE-FLUIDSYNTH-BUGS-LISTINFO}, list information page}.
+
+Further information and a list of available commands are available
+@uref{@value{UDEBBUGS-SERVER-CONTROL}, here}.

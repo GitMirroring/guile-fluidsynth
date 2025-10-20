@@ -1,0 +1,51 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@page
+@node Concept Index
+@unnumbered Concept Index
+
+This index contains concepts, keywords and non-Schemey names for several
+features, to make it easier to locate the desired sections.
+
+@printindex cp
+
+
+@page
+@node Procedure Index
+@unnumbered Procedure Index
+
+This is an alphabetical list of all the procedures, methods and macros
+in Guile-Fluidsynth.
+
+@c @subheading Repository
+@c @printindex ir
+
+@c @subheading Base Info
+@c @printindex bi
+
+@printindex fn
+
+
+@page
+@node Variable Index
+@unnumbered Variable Index
+
+This is an alphabetical list of all the important variables and
+constants in Guile-Fluidsynth.
+
+@printindex vr
+
+
+@page
+@node Type Index
+@unnumbered Type Index
+
+This is an alphabetical list of all the important data types defined in
+the Guile-Fluidsynth Programmers Manual.
+
+@printindex tp
+

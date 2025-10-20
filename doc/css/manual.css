@@ -1,0 +1,242 @@
+/*
+
+Style-sheet to use for manuals, inspired by Guile,
+
+####
+#### Copyright (C) 2025
+#### David Pirotte (david at altosw dot be)
+
+#### This file is part of Guile-Fluidsynth
+
+#### Guile-Fluidsynth is free software; you can redistribute it and/or
+#### modify it under the terms of the GNU Lesser General Public License
+#### as published by the Free Software Foundation; either version 2.1 of
+#### the License, or (at your option) any later version.
+
+#### Guile-Fluidsynth is distributed in the hope that it will be useful,
+#### but WITHOUT ANY WARRANTY; without even the implied warranty of
+#### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#### Lesser General Public License for more details.
+
+#### You should have received a copy of the GNU Lesser General Public
+#### License along with Guile-Fluidsynth.  If not, see
+#### <https://www.gnu.org/licenses/lgpl.html>.
+####
+
+/*
+Maybe later
+@import url('/style.css');
+*/
+
+/*
+  makeinfo convert @deffn and similar functions to something inside
+  <blockquote>.  style.css uses italic for blockquote.  This looks
+  poor in the Emacs manuals, which make extensive use of @defun (etc).
+  In particular, references to function arguments appear as <var>
+  inside <blockquote>.  Since <var> is also italic, it makes it
+  impossible to distinguish variables.  We could change <var> to
+  e.g. bold-italic, or normal, or a different color, but that does not
+  look as good IMO.  So we just override blockquote to be non-italic.
+*/
+
+
+/*
+***
+***  Classes
+***
+*/
+
+.header {
+    !background-color: #f2f2f2;
+    !font-size: small;
+    margin: 0 -1em;
+    padding: 0 1em;
+}
+
+.header p, .node p {
+    line-height: 2em;
+}
+
+/*
+  This makes the very long tables of contents in Gnulib and other
+  manuals easier to read.
+*/
+
+.contents ul,
+.shortcontents ul {
+    font-weight: bold;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+}
+
+.contents ul ul,
+.shortcontents ul ul {
+    font-weight: normal;
+}
+
+.contents ul {
+    list-style: none;
+}
+
+.unnumbered,
+.section,
+.subsection,
+.subheading {
+    !color: #931101;
+    !color: #cf8001;
+    !color: #edb927;
+    !color: #c84300;
+    !color: #a33900;
+    !color: #c1971f;
+}
+
+.float {
+    margin-top: -1em;
+    text-align: center;
+}
+
+.float-caption p {
+    margin-top: -1em;
+    margin-bottom: 1.3em;
+    text-align: center;
+}
+
+
+/*
+***
+*** Native elements
+***
+*/
+
+table {
+    display: block;
+    overflow: auto;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+th {
+    padding: .3em .5em;
+    text-align: center; }
+
+td {
+    !border: 1px solid;
+    !padding: .2em .5em;
+}
+
+.menu td {
+    padding-top: .3em;
+}
+
+.menu td:nth-child(1) {
+    !border: 1px solid;
+    min-width: 18em;
+}
+
+.menu td:nth-child(2) {
+    !border: 1px solid;
+    max-width: 0px;
+}
+
+.menu td:nth-child(3) {
+    !border: 1px solid;
+}
+
+blockquote {
+    font-style: normal;
+}
+
+var {
+    font-style: italic;
+}
+
+
+/*
+  layout.css indents "body p" when it should probably only indent
+  "body > p"?  In any case, disable indenting of p in these sub
+  elements.
+*/
+
+dd p,
+li p {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+/*
+  Underlined links are distracting, especially within outlined
+  tables.
+*/
+
+a { /* add :link for external links */
+    /* don't underline links by default */
+    text-decoration: none;
+    /* don't put dotted box around clicked links */
+    outline-style: none;
+    color: #547eaa;
+    !color: #7a9b8f;
+    !color: #6c8c80;
+    /* the economist blue alink */
+    !color: #3e51b5;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a code {
+    color: #547eaa;
+    !color: #6c8c80;
+    /* the economist blue alink */
+    !color: #3e51b5;
+}
+
+a[href] { color: #005090; }
+a[href]:visited { color: #100070; }
+a[href]:active, a[href]:hover {
+   color: #100070;
+   text-decoration: none;
+}
+
+/*
+  The shadow around the body is distracting.
+*/
+html {
+    background-color: #e7e7e7;
+}
+
+body {
+    box-shadow: 0 0 0 0;
+    color: #333;
+    background-color: white;
+    max-width: 45em;
+    margin: 0 auto;
+    padding: .5em 3em .5em 3em;
+    border: .1em solid #c0c0c0;
+}
+
+code,
+samp,
+tt,
+var {
+    color: #770;
+}
+
+pre.example,
+pre.lisp,
+pre.verbatim {
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+    border: 1px solid #d4cbb6;
+    background-color: #f2efe4;
+    /* background-color: #f1f8e9; /* libfive h1 */
+    /* background-color: #e8f5e9; /* libfive h2 */
+    /* background-color: #e0f2f1; /* libfive h3 */
+    /* background-color: #e0f7fa; /* libfive h4 */
+    /* background-color: #e1f5fe; /* libfive h5 */
+    margin-left: -3.5em;
+    padding: .8em;
+    font-size: .9em;
+}

@@ -1,0 +1,59 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@node Using Guile-Fluidsynth
+@c @chapter Using Guile-Fluidsynth
+@unnumbered II. Using Guile-Fluidsynth
+
+
+@node Starting Guile-Fluidsynth
+@section Starting Guile-Fluidsynth
+
+Open a terminal and:
+
+@lisp
+guile
+scheme@@(guile-user)> ,use (f-synth)
+scheme@@(guile-user)> (make <synth>)
+@result{} $5 = #<<synth> 7f746c768db0> @footnote{It may display the
+ following warning: fluidsynth: warning: Failed to set thread to high
+ priority.
+
+The warning means that
+FluidSynth tried to increase a thread priority, but failed. This is
+usually due to insufficient privileges of the user running
+FluidSynth. This page has quite a good description on how to configure
+your system user limits to allow higher priority threads:
+https://jackaudio.org/faq/linux_rt_config.html
+
+Having said that: depending on your use-case it might not be
+necessary. For example, if you use FluidSynth to render MIDI to a file,
+then this warning can safely be ignored.
+
+But if you want to use FluidSynth as a real-time synth, then changing
+the rtprio and memlock levels as explained by the above link will
+definitely help.}
+
+scheme@@(guile-user)> (noteon $5 0 60 100)
+@end lisp
+
+Or if you use @uref{@value{UEMACS}, Emacs} which, coupled with
+@uref{@value{UGEISER}, Geiser} absolutely rocks @code{:-)}, then a
+typical session becomes:
+
+@lisp
+fire Emacs
+
+M-x geiser-guile
+scheme@@(guile-user)> ,use (f-synth)
+scheme@@(guile-user)> (make <synth>)
+@result{} $5 = #<<synth> 7f746c768ac0>
+
+scheme@@(guile-user)> (noteon $5 0 60 100)
+@end lisp
+
+If everything went well, which ever of the above approached you used, it
+should have played a "Yamaha Grand Piano" C4 (middle c) 261.63 Hz note.

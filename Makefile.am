@@ -17,7 +17,7 @@
 
 #### You should have received a copy of the GNU Lesser General Public
 #### License along with Guile-Fluidsynth.  If not, see
-#### <https://www.gnu.org/licenses/gpl.html>.
+#### <https://www.gnu.org/licenses/lgpl.html>.
 ####
 
 
@@ -69,10 +69,9 @@ CLEANFILES = \
 ETAGS_ARGS = \
 	$(SOURCES)
 
-
-#SUBDIRS = \
-#	test-suite			\
-#	doc
+SUBDIRS = \
+	doc
+#	test-suite
 
 
 ACLOCAL_AMFLAGS = -I m4
