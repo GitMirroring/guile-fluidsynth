@@ -26,9 +26,17 @@
 ;;; Code:
 
 
-(define-module (f-synth)
+(define-module (f-synth-dev)
   #:use-module (oop goops)
-  #:use-module (f-synth support module)
+  #:use-module (oop goops describe)
+  #:use-module (system foreign)
+  #:use-module (rnrs bytevectors)
+  #:use-module (ice-9 match)
+  #:use-module (ice-9 receive)
+  #:use-module (srfi srfi-1)
+  #:use-module (srfi srfi-4)
+  #:use-module (f-synth support)
+  #:use-module (f-synth ffi)
   #:use-module (f-synth synth)
 
   #:duplicates (merge-generics
@@ -40,4 +48,13 @@
 
 (eval-when (compile load eval)
   (re-export-public-interface (oop goops)
+                              (oop goops describe)
+			      (system foreign)
+			      (rnrs bytevectors)
+			      (ice-9 match)
+                              (ice-9 receive)
+			      (srfi srfi-1)
+			      (srfi srfi-4)
+                              (f-synth support)
+                              (f-synth ffi)
                               (f-synth synth)))

@@ -39,6 +39,7 @@ SOURCES = \
 	f-synth/ffi/sfont.scm		\
 	f-synth/ffi.scm			\
 	f-synth/synth.scm		\
+	f-synth-dev.scm			\
 	f-synth.scm
 
 NOCOMP_SOURCES= \
