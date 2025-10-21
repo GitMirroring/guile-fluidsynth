@@ -48,7 +48,10 @@ NOCOMP_SOURCES= \
 EXTRA_DIST = \
 	AUTHORS				\
 	ChangeLog			\
-	COPYING				\
+	COPYING.LESSER.v2.1		\
+	COPYING.LESSER.v3		\
+	COPYING.v2			\
+	COPYING.v3			\
 	INSTALL				\
 	LICENSE				\
 	NEWS				\
