@@ -17,7 +17,7 @@
 
 #### You should have received a copy of the GNU Lesser General Public
 #### License along with Guile-Fluidsynth.  If not, see
-#### <https://www.gnu.org/licenses/lgpl.html>.
+#### <https://www.gnu.org/licenses/>.
 ####
 
 
@@ -50,7 +50,6 @@ EXTRA_DIST = \
 	ChangeLog			\
 	COPYING.LESSER.v2.1		\
 	COPYING.LESSER.v3		\
-	COPYING.v2			\
 	COPYING.v3			\
 	INSTALL				\
 	LICENSE				\
