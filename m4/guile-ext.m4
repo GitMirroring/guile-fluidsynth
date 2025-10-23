@@ -13,8 +13,8 @@
 ## Lesser General Public License for more details.
 ##
 ## You should have received a copy of the GNU Lesser General Public
-## License along with GNU G-Golf.  If not, see
-## <https://www.gnu.org/licenses/lgpl.html>.
+## License along with this library.  If not, see
+## <https://www.gnu.org/licenses/>.
 ##
 
 # serial 12

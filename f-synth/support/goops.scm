@@ -18,7 +18,7 @@
 
 ;;;; You should have received a copy of the GNU Lesser General Public
 ;;;; License along with Guile-Fluidsynth.  If not, see
-;;;; <https://www.gnu.org/licenses/lglp.html>.
+;;;; <https://www.gnu.org/licenses/>.
 ;;;;
 
 ;;; Commentary:
@@ -29,7 +29,6 @@
 (define-module (f-synth support goops)
   #:use-module (ice-9 match)
   #:use-module (oop goops)
-  ;; #:use-module (g-golf support g-export)
 
   #:duplicates (merge-generics
 		replace
