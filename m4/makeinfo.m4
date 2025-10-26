@@ -1,7 +1,7 @@
 
 
 ####
-#### Copyright (C) 2019 - 2021
+#### Copyright (C) 2019 - 2025
 #### Free Software Foundation, Inc.
 
 #### Autoconf macro to check the presence and version of the makeinfo
@@ -19,7 +19,7 @@
 
 #### You should have received a copy of the GNU Lesser General Public
 #### License along with this library.  If not, see
-#### <https://www.gnu.org/licenses/lgpl.html>.
+#### <https://www.gnu.org/licenses/>.
 ####
 
 
