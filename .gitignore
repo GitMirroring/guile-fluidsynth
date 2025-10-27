@@ -17,7 +17,9 @@ configure
 pre-inst-env
 guile-fluidsynth-*.tar.gz
 guile-fluidsynth-*.tar.gz.sig
-Makefile
+/Makefile
+doc/Makefile
+test-suite/Makefile
 Makefile.in
 meta/guile-fluidsynth-1.0.pc
 doc/version.texi
