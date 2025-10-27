@@ -21,7 +21,7 @@ warranty.
               ===========================================
 
               Please send Guile-Fluidsynth bug reports to
-                          bug-guile@gnu.org
+                          guile-user@gnu.org
 
 
 * Guile-Fluidsynth
@@ -49,7 +49,8 @@ Guile-Fluidsynth also has a [[https://savannah.gnu.org/][Savannah]] project page
 
 ** License
 
-GNU Guile-CV is a free software, distributed under the terms of the GNU
-General Public License GPLv3 or higher. You must be aware there is no
-warranty whatsoever for GNU Guile-CV. This is described in full in the
-license.
+Guile-Fluidsynth is a free software, distributed under the terms of the
+GNU Lesser General Public License as published by the Free Software
+Foundation; either version 2.1 of the License, or (at your option) any
+later version. You must be aware there is no warranty whatsoever for
+Guile-Fluidsynth. This is described in full in the license.

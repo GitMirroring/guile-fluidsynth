@@ -28,9 +28,10 @@ living entity. Right now, the contributor to this manual is:
 
 who is also the author and maintainer of Guile-Fluidsynth.
 
-You are most welcome to join and help.  Visit
-@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} web site to find out
-how to get involved.
+@c You are most welcome to join and help.
+
+@c Visit @uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} web site to
+@c find out how to get involved.
 
 
 @node Guile-Fluidsynth License

@@ -9,7 +9,7 @@
 
 @set UGUILE http://www.gnu.org/software/guile
 @set UGUILE-LIB http://www.nongnu.org/guile-lib
-@set UGUILE-LISTINFO https://lists.gnu.org/mailman/listinfo/
+@set UGUILE-LISTINFO https://lists.gnu.org/mailman/listinfo/guile-user
 
 @set GUILE-USER @email{guile-user@@gnu.org}
 @set GUILE-DEVEL @email{guile-devel@@gnu.org}
@@ -22,11 +22,11 @@
 @set UGUILE-FLUIDSYNTH-LATEST http://download.savannah.gnu.org/releases/guile-fluidsynth/guile-fluidsynth-@value{VERSION}.tar.gz
 @set UGUILE-FLUIDSYNTH-GIT https://cgit.git.savannah.gnu.org/cgit/guile-fluidsynth.git
 
-@set GUILE-FLUIDSYNTH-BUGS @email{bugs-guile@@gnu.org}
+@set GUILE-FLUIDSYNTH-BUGS @email{guile-user@@gnu.org}
 
 @set UGUILE-FLUIDSYNTH-LISTINFO FIXME
 @set UGUILE-FLUIDSYNTH-BUGS-TRACKER FIXME
-@set UGUILE-FLUIDSYNTH-BUGS-LISTINFO https://lists.gnu.org/mailman/listinfo/bug-guile
+@set UGUILE-FLUIDSYNTH-BUGS-LISTINFO https://lists.gnu.org/mailman/listinfo/guile-user
 
 @set UDEBBUGS-SERVER-CONTROL https://debbugs.gnu.org/server-control.html
 

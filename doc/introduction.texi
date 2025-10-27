@@ -115,13 +115,13 @@ make
 make install
 @end example
 
-The above steps ensure you're using @uref{@value{UGUILE-FLUIDSYNTH},
-Guile-Fluidsynth} bleeding edge @code{stable} version. If you wish to
-participate to developments, checkout the @code{devel} branch:
+@c The above steps ensure you're using @uref{@value{UGUILE-FLUIDSYNTH},
+@c Guile-Fluidsynth} bleeding edge @code{stable} version. If you wish to
+@c participate to developments, checkout the @code{devel} branch:
 
-@example
-git checkout devel
-@end example
+@c @example
+@c git checkout devel
+@c @end example
 
 Happy @code{hacking!}
 
@@ -218,7 +218,7 @@ Guile-Fluidsynth uses the following mailing list:
 Please use @samp{F-Synth - } to preceed the subject line of
 Guile-Fluidsynth related emails, thanks!
 
-You can (un)subscribe to the mailing lists by following instructions on
+You can (un)subscribe to the mailing list by following instructions on
 their respective @uref{@value{UGUILE-LISTINFO}, list information page}.
 
 
@@ -238,8 +238,11 @@ Guile-Fluidsynth uses the following bug reports mailing list:
 @item @value{GUILE-FLUIDSYNTH-BUGS}
 @end itemize
 
-You can (un)subscribe to the bugs report list by following instructions
-on the @uref{@value{UGUILE-FLUIDSYNTH-BUGS-LISTINFO}, list information page}.
+Please use @samp{F-Synth - } to preceed the subject line of
+Guile-Fluidsynth related bug reports, thanks!
 
-Further information and a list of available commands are available
-@uref{@value{UDEBBUGS-SERVER-CONTROL}, here}.
+You can (un)subscribe to the list by following instructions on the
+@uref{@value{UGUILE-FLUIDSYNTH-BUGS-LISTINFO}, list information page}.
+
+@c Further information and a list of available commands are available
+@c @uref{@value{UDEBBUGS-SERVER-CONTROL}, here}.

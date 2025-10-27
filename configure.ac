@@ -32,7 +32,7 @@ AC_PREREQ(2.69)
 AC_INIT(
   [guile-fluidsynth],
   [0.1.0],
-  [bug-guile@gnu.org])
+  [guile-user@gnu.org])
 
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
