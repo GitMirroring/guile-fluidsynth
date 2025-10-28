@@ -98,7 +98,7 @@ PKG_CHECK_MODULES(FLUIDSYNTH, fluidsynth >= 2.4)
 
 # Although guile itself depends on libffi, we make this call to get
 # FFI_CFLAGS and FFI_LIBS to be defined, used by libtonic.
-PKG_CHECK_MODULES(FFI, libffi >= 3.3.0)
+# PKG_CHECK_MODULES(FFI, libffi >= 3.3.0)
 
 
 
