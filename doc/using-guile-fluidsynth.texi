@@ -12,10 +12,18 @@
 @node Starting Guile-Fluidsynth
 @section Starting Guile-Fluidsynth
 
-Open a terminal and:
+The project name is guile-fluiddsynth, but for practicle reasons the
+module name is @code{f-synth}. As a guile-fluidsynth user, it is the
+only module you need to import to get access to the goops classes this
+project defines as well as their accessors and methods.
+
+Let's just start guile-fluidsynth - as just said above, import the
+(f-synth) module - make a synthesizer a play a note. Open a terminal
+and:
 
 @lisp
 guile
+@dots{}
 scheme@@(guile-user)> ,use (f-synth)
 scheme@@(guile-user)> (make <synth>)
 @result{} $5 = #<<synth> 7f746c768db0> @footnote{It may display the
