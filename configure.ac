@@ -44,8 +44,8 @@ AM_INIT_AUTOMAKE([1.14 gnu -Wall -Werror -Wno-portability -Wno-syntax \
 AM_MAINTAINER_MODE([enable])
 AM_SILENT_RULES([yes])
 
-AC_PROG_CC
-LT_INIT([disable-static])
+# AC_PROG_CC
+# LT_INIT([disable-static])
 
 AC_COPYRIGHT(GUILE_FLUIDSYNTH_CONFIGURE_COPYRIGHT)
 AC_CONFIG_SRCDIR([f-synth])
@@ -95,6 +95,8 @@ AC_SUBST([SITECCACHEDIR])
 
 
 PKG_CHECK_MODULES(FLUIDSYNTH, fluidsynth >= 2.4)
+
+FLUIDR3_GM_Sf2=/usr/share/sounds/sf2/FluidR3_GM.sf2
 
 # Although guile itself depends on libffi, we make this call to get
 # FFI_CFLAGS and FFI_LIBS to be defined, used by libtonic.
