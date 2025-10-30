@@ -34,6 +34,7 @@
   #:use-module (nyacc foreign cdata)
   #:use-module (f-synth support)
   #:use-module (f-synth ffi)
+  #:use-module (f-synth defaults)
 
   #:duplicates (merge-generics
 		replace
@@ -47,6 +48,7 @@
 (g-export !settings
           !synth
           !audio-driver
+          !soundfont
           !sfid
           !gain
 
@@ -63,6 +65,7 @@
   (settings #:accessor !settings)
   (synth #:accessor !synth)
   (audio-driver #:accessor !audio-driver)
+  (soundfont #:accessor !soundfont)
   (sfid  #:accessor !sfid)
   (gain #:accessor !gain
         #:allocation #:virtual
@@ -77,10 +80,11 @@
 
 (define-method (initialize (self <synth>) initargs)
   (next-method)
-  (let* ((gain (get-keyword #:gain initargs 0.5))
+  (let* ((soundfont (get-keyword #:soundfont initargs (stow-ref 'soundfont)))
+         (gain (get-keyword #:gain initargs (stow-ref 'gain)))
          (settings (new_fluid_settings))
          (synth (new_fluid_synth settings))
-         (sfid (fluid_synth_sfload synth "/usr/share/sounds/sf2/FluidR3_GM.sf2" 1))
+         (sfid (fluid_synth_sfload synth soundfont 1))
          (audio-driver (new_fluid_audio_driver settings synth)))
     (mslot-set! self
                 'settings settings
