@@ -30,6 +30,7 @@
   #:use-module (f-synth support module)
   #:use-module (f-synth support goops)
   #:use-module (f-synth support g-export)
+  #:use-module (f-synth support stow)
   #:use-module (f-synth support utils))
 
 
@@ -37,4 +38,5 @@
   (re-export-public-interface (f-synth support module)
                                (f-synth support goops)
                                (f-synth support g-export)
+                               (f-synth support stow)
                                (f-synth support utils)))
