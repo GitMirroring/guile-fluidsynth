@@ -78,20 +78,25 @@
                       (fluid_settings_setnum (!settings obj) "synth.gain" val)
                       (values))))
 
+(define %no-soundfont
+  "Failed to open the soundfont ~A: File does not exist.")
+
 (define-method (initialize (self <synth>) initargs)
   (next-method)
-  (let* ((soundfont (get-keyword #:soundfont initargs (stow-ref 'soundfont)))
-         (gain (get-keyword #:gain initargs (stow-ref 'gain)))
-         (settings (new_fluid_settings))
-         (synth (new_fluid_synth settings))
-         (sfid (fluid_synth_sfload synth soundfont 1))
-         (audio-driver (new_fluid_audio_driver settings synth)))
-    (mslot-set! self
-                'settings settings
-                'synth synth
-                'audio-driver audio-driver
-                'sfid sfid)
-    (fluid_settings_setnum settings "synth.gain" gain)))
+  (let ((soundfont (get-keyword #:soundfont initargs (stow-ref 'soundfont)))
+        (gain (get-keyword #:gain initargs (stow-ref 'gain))))
+    (if (access? soundfont R_OK)
+        (let* ((settings (new_fluid_settings))
+               (synth (new_fluid_synth settings))
+               (sfid (fluid_synth_sfload synth soundfont 1))
+               (audio-driver (new_fluid_audio_driver settings synth)))
+          (mslot-set! self
+                      'settings settings
+                      'synth synth
+                      'audio-driver audio-driver
+                      'sfid sfid)
+          (fluid_settings_setnum settings "synth.gain" gain))
+        (error (format #f "~?" %no-soundfont (list soundfont))))))
 
 (define-method (sfload (self <synth>) name preset?)
   (fluid_synth_sfload (!synth self) name (scm->c preset? 'boolean)))
