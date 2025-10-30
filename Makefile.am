@@ -30,6 +30,7 @@ SOURCES = \
 	f-synth/support/module.scm	\
 	f-synth/support/goops.scm	\
 	f-synth/support/g-export.scm	\
+	f-synth/support/stow.scm	\
 	f-synth/support/utils.scm	\
 	f-synth/support.scm		\
 	f-synth/ffi/types.scm		\
@@ -38,6 +39,7 @@ SOURCES = \
 	f-synth/ffi/audio.scm		\
 	f-synth/ffi/sfont.scm		\
 	f-synth/ffi.scm			\
+	f-synth/defaults.scm		\
 	f-synth/synth.scm		\
 	f-synth-dev.scm			\
 	f-synth.scm
