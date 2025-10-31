@@ -106,14 +106,13 @@ If everything went well, it should have played a "Yamaha Grand Piano" C4
 (middle c) 261.63 Hz note.
 
 @cartouche Important
-As the default instrument, is a "Yamaha Grand Piano"@footnote{The
+As the default instrument is a "Yamaha Grand Piano"@footnote{The
 default preselected bank and program for the midi channel 0, using the
 FluidR3_GM.sf2 soundfont.}, which is a percusive instrument, the note is
 played and will slowly fade till no sound can be heard.
 
-If you affect a none percusive instrument to a midi channel, then you
-have to call @code{noteoff}:
-channel and the midi key:
+If you affect a none percusive instrument to a midi channel, such as an
+organ for example, then you have to call @code{noteoff}:
 
 @lisp
 (noteoff $5 0 60)
