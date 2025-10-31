@@ -9,21 +9,75 @@
 @unnumbered II. Using Guile-Fluidsynth
 
 
-@node Starting Guile-Fluidsynth
-@section Starting Guile-Fluidsynth
+@node Preliminary Note
+@section Preliminary Note
 
 The project name is guile-fluiddsynth, but for practicle reasons the
-module name is @code{f-synth}. As a guile-fluidsynth user, it is the
-only module you need to import to get access to the goops classes this
-project defines as well as their accessors and methods.
+module name is @code{f-synth}.
 
-Let's just start guile-fluidsynth - as just said above, import the
-(f-synth) module - make a synthesizer a play a note. Open a terminal
-and:
+As a guile-fluidsynth user, it is the only module you need to use
+(import) to get access to the public api of the project, namely its
+public goops classes, accessors, methods and procedures.
+
+
+@node Customizing Guile-Fluidsynth
+@section Customizing Guile-Fluidsynth
+
+Guile-Fluidsynth defines a few default values, kept in a @code{stow} (a
+storage functionality implemented using a hash table). To list the
+content of the stow, call @code{(stow->alist)}:
 
 @lisp
-guile
-@dots{}
+scheme@@(guile-user)> ,use (f-synth)
+scheme@@(guile-user)> (stow->alist)
+@result{} $5 = ((soundfont . "/usr/share/sounds/sf2/FluidR3_GM.sf2") (gain . 0.4))
+@end lisp
+
+As you can see, there are currently two stow entries, one for the
+default @code{soundfont} and the other for the default @code{gain}.
+
+@subsection The soundfont
+
+The default soundfont value is
+@file{/usr/share/sounds/sf2/FluidR3_GM.sf2}, which is the common
+location and name on most GNU Linux (platform) distributions.
+
+Guile-Fluidsynth users must ensure either this font exists, or customize
+the soundfont stow entry depending on their distro and/or platform,
+using the @code{stow-set!} api, here is an example:
+
+@lisp
+scheme@@(guile-user)> ,use (f-synth)
+scheme@@(guile-user)> (stow-set! 'soundfont "/the/path/to/example.sf2")
+@end lisp
+
+Guile-Fluidsynth will raise an exception, attempting to make a
+synthesizer, if it can't find the soundfont.
+
+@subsection The gain
+
+The default gain value is @code{0.4}@footnote{The upstream default value
+ is 0.2, but that renders to emited sounds barely audible, even with a
+ relatively high volume setting.}.
+
+To customize the gain stow entry, use the @code{stow-set!} api, here is
+an example:
+
+@lisp
+scheme@@(guile-user)> ,use (f-synth)
+scheme@@(guile-user)> (stow-set! 'gain 0.5)
+@end lisp
+
+
+@node Make a Synthesizer - Play a Note
+@section Make a Synthesizer - Play a Note
+
+Let's start guile-fluidsynth, make a synthesizer and play a note. Open a
+terminal and launch guile, or if you use @uref{@value{UEMACS}, Emacs}
+which, coupled with @uref{@value{UGEISER}, Geiser} absolutely rocks
+@code{:-)}, then fire emacs, followed by M-x geiser-guile, then:
+
+@lisp
 scheme@@(guile-user)> ,use (f-synth)
 scheme@@(guile-user)> (make <synth>)
 @result{} $5 = #<<synth> 7f746c768db0> @footnote{It may display the
@@ -48,20 +102,5 @@ definitely help.}
 scheme@@(guile-user)> (noteon $5 0 60 100)
 @end lisp
 
-Or if you use @uref{@value{UEMACS}, Emacs} which, coupled with
-@uref{@value{UGEISER}, Geiser} absolutely rocks @code{:-)}, then a
-typical session becomes:
-
-@lisp
-fire Emacs
-
-M-x geiser-guile
-scheme@@(guile-user)> ,use (f-synth)
-scheme@@(guile-user)> (make <synth>)
-@result{} $5 = #<<synth> 7f746c768ac0>
-
-scheme@@(guile-user)> (noteon $5 0 60 100)
-@end lisp
-
-If everything went well, which ever of the above approached you used, it
-should have played a "Yamaha Grand Piano" C4 (middle c) 261.63 Hz note.
+If everything went well, it should have played a "Yamaha Grand Piano" C4
+(middle c) 261.63 Hz note.

@@ -27,17 +27,17 @@
 fluidsynth} library
 
 
-@c @subheading Description
+@subheading Description
 
-@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth},
-@uref{@value{UGUILE}, Guile} bindings to the @uref{@value{UFLUIDSYNTH},
-fluidsynth} library.
+There is not much else to say, @uref{@value{UGUILE-FLUIDSYNTH},
+Guile-Fluidsynth} is a @uref{@value{UGUILE}, Guile Scheme} bindings
+library to the @uref{@value{UFLUIDSYNTH}, fluidsynth} library.
 
 
-@subheading Savannah
+@c @subheading Savannah
 
-@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} also has a
-@uref{@value{UGUILE-FLUIDSYNTH-SAVANNAH}, Savannah project page}.
+@c @uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} also has a
+@c @uref{@value{UGUILE-FLUIDSYNTH-SAVANNAH}, Savannah project page}.
 
 
 @node Obtaining and Installing Guile-Fluidsynth
@@ -100,9 +100,9 @@ Happy @uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth}!
 @uref{@value{UGUILE-FLUIDSYNTH-SAVANNAH}, Savannah}, you may browse the
 sources repository @uref{@value{UGUILE-FLUIDSYNTH-GIT}, here}.
 
-There are currently 2 [important] branches: @code{master} and
-@code{devel}. @uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} stable
-branch is master, developments occur on the devel branch.
+@c There are currently 2 [important] branches: @code{master} and
+@c @code{devel}. @uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} stable
+@c branch is master, developments occur on the devel branch.
 
 So, to grab, compile and install from the source, open a terminal and:
 
