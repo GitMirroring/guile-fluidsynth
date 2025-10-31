@@ -240,3 +240,14 @@ pre.verbatim {
     padding: .8em;
     font-size: .9em;
 }
+
+table {
+    border: 2px solid tan;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+
+th, td {
+    border: 0px;
+    padding: 10px;
+}
