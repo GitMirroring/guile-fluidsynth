@@ -16,7 +16,8 @@
 
 @set USCHEME http://schemers.org
 
-@set UGUILE-FLUIDSYNTH http://www.nongnu.org/guile-fluidsynth
+@c @set UGUILE-FLUIDSYNTH http://www.nongnu.org/guile-fluidsynth
+@set UGUILE-FLUIDSYNTH http://savannah.nongnu.org/projects/guile-fluidsynth
 @set UGUILE-FLUIDSYNTH-SAVANNAH http://savannah.nongnu.org/projects/guile-fluidsynth
 @set UGUILE-FLUIDSYNTH-RELEASES http://download.savannah.gnu.org/releases/guile-fluidsynth
 @set UGUILE-FLUIDSYNTH-LATEST http://download.savannah.gnu.org/releases/guile-fluidsynth/guile-fluidsynth-@value{VERSION}.tar.gz
