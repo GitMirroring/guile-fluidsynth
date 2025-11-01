@@ -30,7 +30,7 @@ content of the stow, call @code{(stow->alist)}:
 @lisp
 scheme@@(guile-user)> ,use (f-synth)
 scheme@@(guile-user)> (stow->alist)
-@result{} $5 = ((soundfont . "/usr/share/sounds/sf2/FluidR3_GM.sf2") (gain . 0.4))
+$5 = ((soundfont . "/usr/share/sounds/sf2/FluidR3_GM.sf2") (gain . 0.4))
 @end lisp
 
 As you can see, there are currently two stow entries, one for the
@@ -80,7 +80,7 @@ which, coupled with @uref{@value{UGEISER}, Geiser} absolutely rocks
 @lisp
 scheme@@(guile-user)> ,use (f-synth)
 scheme@@(guile-user)> (make <synth>)
-@result{} $5 = #<<synth> 7f746c768db0> @footnote{It may display the
+$5 = #<<synth> 7f746c768db0> @footnote{It may display the
  following warning: fluidsynth: warning: Failed to set thread to high
  priority.
 
@@ -118,3 +118,62 @@ organ for example, then you have to call @code{noteoff}:
 (noteoff $5 0 60)
 @end lisp
 @end cartouche
+
+
+@node Listing - Selecting - Playing Another Instrument
+@section Listing - Selecting - Playing Another Instrument
+
+@subsection Listing Sounfont Programs
+
+To obtain the list of programs available in a soundfont, call the
+@code{get-sfont-programs} method:
+
+@lisp
+scheme@@(guile-user)> ,use (f-synth)
+scheme@@(guile-user)> (make <synth>)
+$5 = #<<synth> 7f9a245cba80>
+
+scheme@@(guile-user)> (get-sfont-programs $5)
+$6 = (("Yamaha Grand Piano" 0 0) ("Bright Yamaha Grand" 0 1) ("Electric Piano" …) …)
+@end lisp
+
+Following the midi terminology, each entry contains a @code{name}, a
+@code{bank} and a @code{program} number.
+
+@subsection Selecting a Soundfont Program
+
+We'll let you explore the list of programs available in the default
+FluidR3_GM.sf2 soundfont, but its program indexed 19 is the "Church
+Organ"@footnote{The 20th entry in the list of programs, indexed both in
+the midi and scheme specification using a [0 (- n 1)] nomenclature.}.
+
+Keeping the above sequence of repl commands in mind, we have:
+
+@lisp
+...
+scheme@@(guile-user)> (list-ref $6 19)
+$9 = ("Church Organ" 0 19)
+@end lisp
+
+Selecting a midi channel program is acheived calling the
+@code{program-select} method. Its arguments are a @code{<synth>}
+instance, a midi channel, the soundfont id - which is stored in the
+@code{sfid} slot of each @code{<synth>} instance and available calling
+the @code{!sfid} accessor - as well as the midi bank and program
+numbers:
+
+@lisp
+...
+scheme@@(guile-user)> (program-select $5 0 (!sfid $5) 0 19)
+@end lisp
+
+Now, if we play a note, we'll get a "Church Organ" sound, and as
+explained in the previous "Important" subsection entry, we now have to
+call @code{noteoff} to fade and silent the played note:
+
+@lisp
+scheme@@(guile-user)> (noteon $5 0 60 100)
+;; wait a few seconds
+
+scheme@@(guile-user)> (noteoff $5 0 60)
+@end lisp
