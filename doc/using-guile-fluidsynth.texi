@@ -51,8 +51,10 @@ scheme@@(guile-user)> ,use (f-synth)
 scheme@@(guile-user)> (stow-set! 'soundfont "/the/path/to/example.sf2")
 @end lisp
 
+@cartouche Important
 Guile-Fluidsynth will raise an exception, attempting to make a
 synthesizer, if it can't find the soundfont.
+@end cartouche
 
 @subsection The gain
 
@@ -168,7 +170,7 @@ scheme@@(guile-user)> (program-select $5 0 (!sfid $5) 0 19)
 @end lisp
 
 Now, if we play a note, we'll get a "Church Organ" sound, and as
-explained in the previous "Important" subsection entry, we now have to
+explained in the previous subsection, the Important note, we now have to
 call @code{noteoff} to fade and silent the played note:
 
 @lisp
