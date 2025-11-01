@@ -48,7 +48,7 @@ using the @code{stow-set!} api, here is an example:
 
 @lisp
 scheme@@(guile-user)> ,use (f-synth)
-scheme@@(guile-user)> (stow-set! 'soundfont "/the/path/to/example.sf2")
+scheme@@(guile-user)> (stow-set! 'soundfont "/path/to/example.sf2")
 @end lisp
 
 @cartouche Important
