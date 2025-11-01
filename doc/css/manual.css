@@ -250,9 +250,11 @@ table.cartouche {
 table.cartouche th {
     border: 0px;
     padding: 10px;
+    padding-bottom: 0px;
 }
 
 table.cartouche td {
     border: 0px;
     padding: 10px;
+    padding-top: 0px;
 }
