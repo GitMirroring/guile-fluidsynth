@@ -12,7 +12,7 @@
 @node Preliminary Note
 @section Preliminary Note
 
-The project name is guile-fluiddsynth, but for practicle reasons the
+The project name is guile-fluidsynth, but for practicle reasons the
 module name is @code{f-synth}.
 
 As a guile-fluidsynth user, it is the only module you need to use
