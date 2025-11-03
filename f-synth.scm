@@ -28,6 +28,7 @@
 
 (define-module (f-synth)
   #:use-module (oop goops)
+  #:use-module (f-synth support g-export)
   #:use-module (f-synth support module)
   #:use-module (f-synth support stow)
   #:use-module (f-synth synth)
@@ -41,5 +42,7 @@
 
 (eval-when (compile load eval)
   (re-export-public-interface (oop goops)
+                              (f-synth support g-export)
+                              (f-synth support module)
                               (f-synth support stow)
                               (f-synth synth)))
