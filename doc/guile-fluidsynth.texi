@@ -76,6 +76,7 @@ Documentation License.''
 * Preface::
 * Introduction::
 * Using Guile-Fluidsynth::
+* Guile-Fluidsynth Reference Manual::
 
 Appendices
 
@@ -97,6 +98,7 @@ Indices
 @include preface.texi
 @include introduction.texi
 @include using-guile-fluidsynth.texi
+@include cr.texi
 
 
 @node GNU Free Documentation License

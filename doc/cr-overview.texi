@@ -1,0 +1,268 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@node Project Structure and Naming Conventions
+@subsection Project Structure and Naming Conventions
+
+Guile-Fluidsynth modules, documentation structure and naming conventions
+are based, whenever it is possible, on the structure and naming
+conventions of the fluidsynth library, which imports the following
+modules:
+
+
+@indentedblock
+@table @code
+
+@item #include "fluidsynth/types.h"
+@item #include "fluidsynth/settings.h"
+@item #include "fluidsynth/synth.h"
+@item #include "fluidsynth/shell.h"
+@item #include "fluidsynth/sfont.h"
+@item #include "fluidsynth/audio.h"
+@item @dots{}
+
+@end table
+@end indentedblock
+
+
+
+Guile-Fluidsynth modules are organized under the @file{f-synth}
+directory, so a typical installation would look like this (purposefully
+only listing a few files of each subdirectory):
+
+@indentedblock
+@table @code
+
+@item f-synth/
+@item @tie{}@tie{} default.scm
+@item @tie{}@tie{} ffi/
+@item @tie{}@tie{}@tie{}@tie{} @dots{}
+@item @tie{}@tie{}@tie{}@tie{} synth.scm
+@item @tie{}@tie{} ffi.scm
+@item @tie{}@tie{} support/
+@item @tie{}@tie{}@tie{}@tie{} @dots{}
+@item @tie{}@tie{}@tie{}@tie{} stow.scm
+@item @tie{}@tie{} support.scm
+@item @tie{}@tie{} synth.scm
+@item f-synth.scm
+
+@end table
+@end indentedblock
+
+So as you can see, to a fluidsynth low level api module, located to the
+@file{ffi} subdir, correspond a guile-fluidsynth high level module, in
+the @file{f-synth} dir.
+
+As a Guile-Fluidsynth user though, the only module you need to import in
+your application (or in the repl) is the @code{(f-synth)} module, which
+imports and re-export the high Guile-Fluidsynth high level api. A
+typicall user module definition would be:
+
+@lisp
+(define-module (foo)
+  #:use-module (oop goops)
+  #:use-module (f-synth)
+
+  #:duplicates (merge-generics
+		replace
+		warn-override-core
+		warn
+		last)
+
+  #export (bar
+           baz
+           ...))
+@end lisp
+
+
+@node GOOPS Notes - Conventions - Recommendations
+@subsection GOOPS Notes - Conventions - Recommendations
+
+Guile-Fluidsynth extensively uses GOOPS, the Guile Object Oriented
+System (@pxref{GOOPS,,, guile, The GNU Guile Reference Manual}).
+
+Here are some GOOPS notes, conventions and recommendations (also) used
+by Guile-Fluidsynth.
+
+
+@ @ @sup{_} @strong{Merging Generics}
+
+In Guile-Fluidsynth, generic functions are always merged (@pxref{Merging
+Generics,,, guile, The GNU Guile Reference Manual}).
+
+Users are (highly) recommended to do the same, in their @code{repl},
+application/library modules and script(s). In its modules - those that
+import (oop goops) - Guile-Fluidsynth uses the following duplicate
+binding handler set:
+
+@example
+  #:duplicates (merge-generics
+		replace
+		warn-override-core
+		warn
+		last)
+@end example
+
+In a @code{repl} or in scripts, these maybe set - after importing (oop
+goops) - by calling @code{default-duplicate-binding-handler}:
+
+
+@example
+(use-modules (oop goops))
+
+(default-duplicate-binding-handler
+    '(merge-generics replace warn-override-core warn last))
+@end example
+
+Guile-Fluidsynth regular users should consider adding the above lines to
+their @file{$HOME/.guile} or, when working in a multi-user environmet,
+should consider adding those lines the file named @file{init.scm} in the
+so-called Guile global site directory@footnote{You need write privileges
+to add or modify this file, contact your system administrator if you're
+not in charge of the system you are working on.}, here (evaluate the
+following expression in a terminal): @code{guile -c "(display
+(%global-site-dir))(newline)"}.
+
+
+@ @ @sup{_} @strong{Accessors Naming Convention}
+
+In Guile-Fluidsynth, all slots define an accessor (and no getter, no setter), the
+name of which is the @code{slot-name } prefixed using @code{!}. For
+example:
+
+@example
+(define-class <synth> ()
+  @dots{}
+  (synth #:accessor !synth)
+  @dots{})
+@end example
+
+The principal reasons are (not in any particular order):
+
+@itemize
+
+@item
+It is a good idea, we think, to be able to visually (and somehow
+immediately) spot and distinct accessors from the rest of the scheme
+code your are looking at or working on.
+@ifhtml
+@* @*
+@end ifhtml
+
+@item
+Accessors are exported, and with this convention, we almost certainly
+avoid all @samp{name clashes} with user namespaces, that otherwise would
+be extremelly frequent@footnote{Slot names tends to be extremelly
+common, like @code{name}, @code{color}, @dots{} and naming their
+respective accessor using the slot name would very likely provoque
+numerous name clashes with user variables, procedures and methods
+names.}.
+@ifhtml
+@* @*
+@end ifhtml
+
+@item
+Users quite often want or even need to cash slot values in a closure.
+By using this @code{!} prefixing convention, we leave users with the
+(quite usefull) possibility to name their local variables using the
+respective slot names.
+@ifhtml
+@* @*
+@end ifhtml
+
+@item Accessors may always be used to mutate a slot value (except for
+virtual slots, for which you can somehow block that feature), like in
+@code{(set! (!name an-actor) "Mike")}.  In scheme, it is a tradition
+to signal mutability by postfixing the procedure name using the @code{!}
+character.
+@ifhtml
+@* @*
+@end ifhtml
+
+@item
+Accessors are not procedures though, there are methods, and to
+effectively mutate a slot value, one must use @code{set!}.  Therefore,
+prefixing makes sence (and preserves the first reason announced here,
+where posfixing would break it).
+@ifhtml
+@* @*
+@end ifhtml
+
+@item
+We should also add that we are well aware that Java also prefixes its
+accessors, using a @code{.} as its prefix character, but GOOPS is
+radically different from Java in its design, and therefore, we really
+wanted another character.
+
+@end itemize
+
+
+@ @ @sup{_} @strong{Recommendations}
+
+New users to GOOPS often face problems related to the way the Guile
+module system interferes with generic functions. Being regurlarly asked
+for help with this respect, here are a few rules that we think new and
+inexperienced GOOPS users should adopt:
+
+@enumerate
+
+@item better preventing then curing: when you define a module that use
+goops, always use, as exposed above:
+
+@lisp
+  #:duplicates (merge-generics
+	        replace
+		warn-override-core
+		warn
+		last)
+@end lisp                
+
+@item unless you really know what you are doing, never call
+@code{define-generic} yourself@footnote{This is because (1) unlike as
+specified by the CLOS/MOP protocol, which states that redefining a
+generic is an error, in GOOPS, it not only will not raise an exception,
+but define a new module variable, silently hidding any imported generic
+function from other modules; and (2) @code{define-method} will call
+@code{define-generic} if there is no corresponding generic function.};
+@ifhtml
+@*@*
+@end ifhtml
+
+
+@item always use @code{#:export} for class names, and make sure class
+names are unique (guile will warn you if not, at import time, so rename
+if you have conflict, never use twice the same class name in different
+modules - unless you really know what you're doing);
+@ifhtml
+@*@*
+@end ifhtml
+
+@item always use @code{g-export} for (and only for) getters, setters,
+accessors and methods;
+@ifhtml
+@*@*
+@end ifhtml
+
+@item remember, while you are developing and testing your code, you have to
+add @code{'merge-generics} to the default-duplicate-binding-handler in
+the repl as well, after you imported goops (in the repl):
+
+@lisp
+,use (oop goops)
+(default-duplicate-binding-handler
+   '(merge-generics replace warn-override-core warn last))
+(use-modules (yourmod1) (yourmod2))
+@end lisp
+
+@end enumerate
+
+With these recommendations, you actually @samp{mimic} the CLOS
+specification, which states that anything related to CLOS lands in a
+specific package, visible to all others@footnote{Mimic because unlike
+CLOS, a generic function in a guile module will only contain methods
+that comes from that module and the one it imports, but not
+(necessarily) all methods for that name (unless the module imports all
+the others that define a method for that name of course).}.

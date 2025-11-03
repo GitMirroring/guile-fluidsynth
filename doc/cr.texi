@@ -1,0 +1,21 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@node Guile-Fluidsynth Reference Manual
+@c @chapter Guile-Fluidsynth Reference Manual
+@unnumbered II. Guile-Fluidsynth Reference Manual
+
+
+@menu
+* Overview::
+@end menu
+
+
+@node Overview
+@section Overview
+
+@include cr-overview.texi
+
