@@ -81,8 +81,8 @@ typicall user module definition would be:
 @node GOOPS Notes - Conventions - Recommendations
 @subsection GOOPS Notes - Conventions - Recommendations
 
-Guile-Fluidsynth extensively uses GOOPS, the Guile Object Oriented
-System (@pxref{GOOPS,,, guile, The GNU Guile Reference Manual}).
+Guile-Fluidsynth uses GOOPS, the Guile Object Oriented System
+(@pxref{GOOPS,,, guile, The GNU Guile Reference Manual}).
 
 Here are some GOOPS notes, conventions and recommendations (also) used
 by Guile-Fluidsynth.
