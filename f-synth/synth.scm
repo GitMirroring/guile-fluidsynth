@@ -93,6 +93,7 @@
           (mslot-set! self
                       'settings settings
                       'synth synth
+                      'soundfont soundfont
                       'audio-driver audio-driver
                       'sfid sfid)
           (fluid_settings_setnum settings "synth.gain" gain))
