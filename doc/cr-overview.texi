@@ -4,6 +4,10 @@
 @c See the file guile-fluidsynth.texi for copying conditions.
 
 
+@node Overview
+@section Overview
+
+
 @node Project Structure and Naming Conventions
 @subsection Project Structure and Naming Conventions
 

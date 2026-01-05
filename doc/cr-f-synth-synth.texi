@@ -1,0 +1,111 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@node Synth
+@subsection Synth
+
+The (f-synth synth) module defines the Guile-Fluidsynth high level api
+to the SoundFont synthesizer.
+
+
+@sp 1
+@subheading Classes
+
+@indentedblock
+@table @code
+@item @ref{<synth>}
+@end table
+@end indentedblock
+
+
+@subheading Procedures, Accessors and Methods
+
+@indentedblock
+@table @code
+@item @ref{!settings}
+@item @ref{!synth}
+@item @ref{!audiodriver}
+@item @ref{!soundfont}
+@item @ref{!sfid}
+@item @ref{!gain}
+@item @ref{sfload}
+@end table
+@end indentedblock
+
+
+@subheading Description
+
+The Guile-Fluidsynth high level api to the SoundFont synthesizer.
+
+
+@subheading Classes
+
+
+@anchor{<synth>}
+@deftp Class <synth>
+
+The SoundFont synthesizer class.
+
+It is an instance of @code{<class>}.
+
+Superclasses are:
+
+@indentedblock
+@table @code
+@item <object>
+@end table
+@end indentedblock
+
+Directs slots are:
+
+@indentedblock
+@table @code
+@item settings
+@item synth
+@item audio-driver
+@item soundfont
+@item sfid
+@item gain
+@end table
+@end indentedblock
+
+No direct subclass
+
+Class Precedence List:
+
+@indentedblock
+@table @code
+@item <synth>
+@item <object>
+@item <top>
+@end table
+@end indentedblock
+
+@end deftp
+
+
+@anchor{!settings}
+@anchor{!synth}
+@anchor{!audiodriver}
+@anchor{!soundfont}
+@anchor{!sfid}
+@anchor{!gain}
+@deffn Accessor !settings (inst <synth>)
+@deffnx Accessor !synth (inst <synth>)
+@deffnx Accessor !audiodriver (inst <synth>)
+@deffnx Accessor !soundfont (inst <synth>)
+@deffnx Accessor !sfid (inst <synth>)
+@deffnx Accessor !gain (inst <synth>)
+
+Returns the content of their respective slot for @var{inst}.
+@end deffn
+
+
+@anchor{sfload}
+@deffn Method sfload (inst <synth>) name preset?
+
+@end deffn
+

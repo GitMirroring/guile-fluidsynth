@@ -12,8 +12,8 @@
 @node Preliminary Note
 @section Preliminary Note
 
-The project name is guile-fluidsynth, but for practicle reasons the
-module name is @code{f-synth}.
+The project name is guile-fluidsynth, but for practicle reasons the code
+name and top-level module name is @code{f-synth}.
 
 As a guile-fluidsynth user, it is the only module you need to use
 (import) to get access to the public api of the project, namely its

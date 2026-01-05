@@ -1,0 +1,31 @@
+@c -*- mode: texinfo; coding: utf-8 -*-
+@c This is part of the Guile-Fluidsynth Reference Manual.
+@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c See the file guile-fluidsynth.texi for copying conditions.
+
+
+@node F-Synth
+@section F-Synth
+
+As stated in the @ref{Preliminary Note} subsection, although the project
+name is guile-fluidsynth, for practicle reasons, the code name and
+top-level module name is @code{f-synth}.
+
+The @code{f-synth} module imports and re-exports the public interfaces
+of the following modules:
+
+@lisp
+(oop goops)
+(f-synth support g-export)
+(f-synth support module)
+(f-synth support stow)
+(f-synth synth)
+@end lisp
+
+For a complete documentation of the @code{(oop goops)} module,
+@pxref{GOOPS,,, guile, The GNU Guile Reference Manual}.
+
+For support modules, visit the @ref{Support} section.
+
+
+@include cr-f-synth-synth.texi

@@ -11,11 +11,11 @@
 
 @menu
 * Overview::
+* F-Synth::
+* Support::
 @end menu
 
 
-@node Overview
-@section Overview
-
 @include cr-overview.texi
-
+@include cr-f-synth.texi
+@include cr-support.texi
