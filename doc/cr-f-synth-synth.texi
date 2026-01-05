@@ -72,8 +72,6 @@ Directs slots are:
 @end table
 @end indentedblock
 
-No direct subclass
-
 Class Precedence List:
 
 @indentedblock
@@ -83,6 +81,26 @@ Class Precedence List:
 @item <top>
 @end table
 @end indentedblock
+
+When making a @code{<synth>} instance, a new settings, audio driver and
+synth objects are created, then a soundfont is loaded and the gain is
+being set.
+
+The initialize method will either use the f-synth default soundfont and
+gain values, as defined and kept in the f-synth stow, or the values
+passed to the make instance call, using the @code{#:soundfont} and as
+@code{#:gain} optional keywords.
+
+The default soundfont and gain values, as defined an kept in the f-synth
+stow, are:
+
+@lisp
+(stow-ref 'soundfont)
+@result{} "/usr/share/sounds/sf2/FluidR3_GM.sf2"
+
+(stow-ref 'gain)
+@result{} 0.4
+@end lisp
 
 @end deftp
 
