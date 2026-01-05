@@ -99,8 +99,13 @@
           (fluid_settings_setnum settings "synth.gain" gain))
         (error (format #f "~?" %no-soundfont (list soundfont))))))
 
-(define-method (sfload (self <synth>) name preset?)
-  (fluid_synth_sfload (!synth self) name (scm->c preset? 'boolean)))
+(define-method* (sfload (self <synth>) name
+                        #:optional (preset? #t))
+  (let ((sfid (fluid_synth_sfload (!synth self) name (scm->c preset? 'boolean))))
+    (mslot-set! self
+                'soundfont name
+                'sfid sfid)
+    sfid))
 
 (define-method (noteon (self <synth>) chan key vel)
   "CHAN > 0, KEY and VEL in the [0 127] range"
