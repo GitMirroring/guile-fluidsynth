@@ -123,11 +123,12 @@ Returns the content of their respective slot for @var{inst}.
 
 
 @anchor{sfload}
-@deffn Method sfload (inst <synth>) filename [(preset? #t)]
+@deffn Method sfload (inst <synth>) filename [(preset?s #t)]
 
 Returns the sfid.
 
-Load the SoundFont file specified by @var{filename}.
+Load the SoundFont file specified by @var{filename}. When @var{presets}
+is #t, all MIDI channels presets will be re-assigned.
 
 @end deffn
 

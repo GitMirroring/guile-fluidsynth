@@ -100,10 +100,10 @@
         (error (format #f "~?" %no-soundfont (list soundfont))))))
 
 (define-method* (sfload (self <synth>) filename
-                        #:optional (preset? #t))
+                        #:optional (presets? #t))
   (let ((sfid (fluid_synth_sfload (!synth self)
                                   filename
-                                  (scm->c preset? 'boolean))))
+                                  (scm->c presets? 'boolean))))
     (mslot-set! self
                 'soundfont filename
                 'sfid sfid)
