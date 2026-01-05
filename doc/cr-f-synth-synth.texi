@@ -123,7 +123,11 @@ Returns the content of their respective slot for @var{inst}.
 
 
 @anchor{sfload}
-@deffn Method sfload (inst <synth>) name preset?
+@deffn Method sfload (inst <synth>) filename [(preset? #t)]
+
+Returns the sfid.
+
+Load the SoundFont file specified by @var{filename}.
 
 @end deffn
 

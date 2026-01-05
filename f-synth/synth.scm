@@ -99,11 +99,13 @@
           (fluid_settings_setnum settings "synth.gain" gain))
         (error (format #f "~?" %no-soundfont (list soundfont))))))
 
-(define-method* (sfload (self <synth>) name
+(define-method* (sfload (self <synth>) filename
                         #:optional (preset? #t))
-  (let ((sfid (fluid_synth_sfload (!synth self) name (scm->c preset? 'boolean))))
+  (let ((sfid (fluid_synth_sfload (!synth self)
+                                  filename
+                                  (scm->c preset? 'boolean))))
     (mslot-set! self
-                'soundfont name
+                'soundfont filename
                 'sfid sfid)
     sfid))
 
