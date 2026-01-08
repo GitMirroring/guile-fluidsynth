@@ -80,18 +80,25 @@ which, coupled with @uref{@value{UGEISER}, Geiser} absolutely rocks
 @code{:-)}, then fire emacs, followed by M-x geiser-guile, then:
 
 @lisp
-scheme@@(guile-user)> ,use (f-synth)
-scheme@@(guile-user)> (make <synth>)
-$5 = #<<synth> 7f746c768db0> @footnote{It may display the
- following warning: fluidsynth: warning: Failed to set thread to high
- priority.
+scheme@@(guile-user)> ,use (f-synth) scheme@@(guile-user)> (make
+<synth>) $5 = #<<synth> 7f746c768db0> @footnote{Fluidsynth (the upstream
+library, not guile-fluidsynth) may display one or two warnings,
+depending on your distro and the fluidsynth library version:
 
-The warning means that
-FluidSynth tried to increase a thread priority, but failed. This is
-usually due to insufficient privileges of the user running
-FluidSynth. This page has quite a good description on how to configure
-your system user limits to allow higher priority threads:
-https://jackaudio.org/faq/linux_rt_config.html
+(1) fluidsynth: warning: SDL3 not initialized, SDL3 audio driver won't
+be usable. Have you called SDL_Init(SDL_INIT_AUDIO) ?
+
+It may safely be ignored, because fluidsynth will fall back to another
+available audio driver backend.
+
+(2) fluidsynth: warning: Failed to set thread to high priority.
+
+The warning means that FluidSynth tried to increase a thread priority,
+but failed. This is usually due to insufficient privileges of the user
+running FluidSynth. This
+@uref{@value{https://jackaudio.org/faq/linux_rt_config.html}, page} has
+quite a good description on how to configure your system user limits to
+allow higher priority threads.
 
 Having said that: depending on your use-case it might not be
 necessary. For example, if you use FluidSynth to render MIDI to a file,
