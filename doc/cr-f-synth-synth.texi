@@ -31,6 +31,8 @@ to the SoundFont synthesizer.
 @item @ref{!soundfont}
 @item @ref{!sfid}
 @item @ref{!gain}
+@item @ref{noteon}
+@item @ref{noteoff}
 @item @ref{sfload}
 @end table
 @end indentedblock
@@ -119,6 +121,36 @@ stow, are:
 @deffnx Accessor !gain (inst <synth>)
 
 Returns the content of their respective slot for @var{inst}.
+@end deffn
+
+
+@anchor{noteon}
+@deffn Method noteon (inst <synth>) chan key vel
+
+Returns nothing.
+
+Send a note-on event to a FluidSynth object. This function will take
+care of proper legato playing. If a note on @var{chan} is already
+playing at the given @var{key}, it will be released (even if it is
+sustained). In other words, overlapping notes are not allowed.
+
+The @var{chan} arg is a MIDI channel number in the range @code{[0 (-
+n-chan 1)]}; @var{key} is a MIDI note number in the range @code{[0
+127]}; @var{vel} is a MIDI velocity, a number in the range @code{[0
+127]} (0 = noteoff).
+@end deffn
+
+
+@anchor{noteoff}
+@deffn Method noteoff (inst <synth>) chan key
+
+Returns nothing.
+
+Send a note-off event to a FluidSynth object.
+
+The @var{chan} arg is a MIDI channel number in the range @code{[0 (-
+n-chan 1)]}; @var{key} is a MIDI note number in the range @code{[0
+127]}.
 @end deffn
 
 
