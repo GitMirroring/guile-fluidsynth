@@ -36,6 +36,7 @@ to the SoundFont synthesizer.
 @item @ref{noteoff}
 @item @ref{program-select}
 @item @ref{get-sfont-by-id}
+@item @ref{get-sfont-programs}
 @end table
 @end indentedblock
 
@@ -187,4 +188,16 @@ program number; @var{sfid} is a loaded SoundFont.
 
 Returns a (pointer to a) SoundFont instance or #f if @var{sfid} is
 invalid.
+@end deffn
+
+
+@anchor{get-sfont-programs}
+@deffn Method get-sfont-programs (inst <synth>) [sfid (!sfid self)]
+
+Returns the list of available SoundFont programs for @var{sfid}, or #f
+if @var{sfid} is invalid.
+
+Following the MIDI terminology, each entry contains a name, a bank and a
+program number.
+
 @end deffn
