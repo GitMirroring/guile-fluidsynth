@@ -119,7 +119,8 @@
   (fluid_synth_noteoff (!synth self) chan key)
   (values))
 
-(define-method (program-select (self <synth>) chan sfid bank preset)
+(define-method* (program-select (self <synth>) chan bank preset
+                                #:optional (sfid (!sfid self)))
   (fluid_synth_program_select (!synth self) chan sfid bank preset)
   (values))
 
