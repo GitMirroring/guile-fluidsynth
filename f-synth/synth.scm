@@ -126,7 +126,9 @@
 
 (define-method* (get-sfont-by-id (self <synth>)
                                  #:optional (sfid (!sfid self)))
-  (fluid_synth_get_sfont_by_id (!synth self) sfid))
+  (let ((sfont (fluid_synth_get_sfont_by_id (!synth self) sfid)))
+    (and (not (null-pointer? sfont))
+         sfont)))
 
 (define-method* (get-sfont-programs (self <synth>)
                                     #:optional (sfid (!sfid self)))
