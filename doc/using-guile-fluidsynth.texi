@@ -1,6 +1,6 @@
 @c -*- mode: texinfo; coding: utf-8 -*-
 @c This is part of the Guile-Fluidsynth Reference Manual.
-@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c Copyright (C) 2025 - 2026 - David Pirotte (david at altosw dot be)
 @c See the file guile-fluidsynth.texi for copying conditions.
 
 
@@ -96,9 +96,9 @@ available audio driver backend.
 The warning means that FluidSynth tried to increase a thread priority,
 but failed. This is usually due to insufficient privileges of the user
 running FluidSynth. This
-@uref{@value{https://jackaudio.org/faq/linux_rt_config.html}, page} has
-quite a good description on how to configure your system user limits to
-allow higher priority threads.
+@uref{https://jackaudio.org/faq/linux_rt_config.html, page} has quite a
+good description on how to configure your system user limits to allow
+higher priority threads.
 
 Having said that: depending on your use-case it might not be
 necessary. For example, if you use FluidSynth to render MIDI to a file,

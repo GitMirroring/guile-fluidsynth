@@ -1,6 +1,6 @@
 @c -*- mode: texinfo; coding: utf-8 -*-
 @c This is part of the Guile-Fluidsynth Reference Manual.
-@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c Copyright (C) 2025 - 2026 - David Pirotte (david at altosw dot be)
 @c See the file guile-fluidsynth.texi for copying conditions.
 
 
@@ -31,9 +31,10 @@ to the SoundFont synthesizer.
 @item @ref{!soundfont}
 @item @ref{!sfid}
 @item @ref{!gain}
+@item @ref{sfload}
 @item @ref{noteon}
 @item @ref{noteoff}
-@item @ref{sfload}
+@item @ref{program-select}
 @end table
 @end indentedblock
 
@@ -124,6 +125,17 @@ Returns the content of their respective slot for @var{inst}.
 @end deffn
 
 
+@anchor{sfload}
+@deffn Method sfload (inst <synth>) filename [(preset?s #t)]
+
+Returns the sfid.
+
+Load the SoundFont file specified by @var{filename}. When @var{presets}
+is #t, all MIDI channels presets will be re-assigned.
+
+@end deffn
+
+
 @anchor{noteon}
 @deffn Method noteon (inst <synth>) chan key vel
 
@@ -154,13 +166,16 @@ n-chan 1)]}; @var{key} is a MIDI note number in the range @code{[0
 @end deffn
 
 
-@anchor{sfload}
-@deffn Method sfload (inst <synth>) filename [(preset?s #t)]
+@anchor{program-select}
+@deffn Method program-select (inst <synth>) chan bank preset@
+                             [sfid (!sfid self)]
 
-Returns the sfid.
+Returns nothing.
 
-Load the SoundFont file specified by @var{filename}. When @var{presets}
-is #t, all MIDI channels presets will be re-assigned.
+Select an instrument on a MIDI channel by SoundFont ID, bank and preset
+(program number).
 
+The @var{chan} arg is a MIDI channel number in the range @code{[0 (-
+n-chan 1)]}; @var{bank} is a MIDI bank number; @var{preset} is a MIDI
+program number; @var{sfid} is a loaded SoundFont.
 @end deffn
-
