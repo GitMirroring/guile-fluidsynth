@@ -35,6 +35,7 @@ to the SoundFont synthesizer.
 @item @ref{noteon}
 @item @ref{noteoff}
 @item @ref{program-select}
+@item @ref{get-sfont-by-id}
 @end table
 @end indentedblock
 
@@ -167,7 +168,7 @@ n-chan 1)]}; @var{key} is a MIDI note number in the range @code{[0
 
 
 @anchor{program-select}
-@deffn Method program-select (inst <synth>) chan bank preset@
+@deffn Method program-select (inst <synth>) chan bank preset @
                              [sfid (!sfid self)]
 
 Returns nothing.
@@ -178,4 +179,12 @@ Select an instrument on a MIDI channel by SoundFont ID, bank and preset
 The @var{chan} arg is a MIDI channel number in the range @code{[0 (-
 n-chan 1)]}; @var{bank} is a MIDI bank number; @var{preset} is a MIDI
 program number; @var{sfid} is a loaded SoundFont.
+@end deffn
+
+
+@anchor{get-sfont-by-id}
+@deffn Method get-sfont-by-id (inst <synth>) [sfid (!sfid self)]
+
+Returns a (pointer to a) SoundFont instance or #f if @var{sfid} is
+invalid.
 @end deffn
