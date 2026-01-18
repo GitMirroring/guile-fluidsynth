@@ -80,9 +80,10 @@ which, coupled with @uref{@value{UGEISER}, Geiser} absolutely rocks
 @code{:-)}, then fire emacs, followed by M-x geiser-guile, then:
 
 @lisp
-scheme@@(guile-user)> ,use (f-synth) scheme@@(guile-user)> (make
-<synth>) $5 = #<<synth> 7f746c768db0> @footnote{Fluidsynth (the upstream
-library, not guile-fluidsynth) may display one or two warnings,
+scheme@@(guile-user)> ,use (f-synth)
+scheme@@(guile-user)> (make <synth>)
+@result{} $5 = #<<synth> 7f746c768db0> @footnote{Fluidsynth (the
+upstream library, not guile-fluidsynth) may display one or two warnings,
 depending on your distro and the fluidsynth library version:
 
 (1) fluidsynth: warning: SDL3 not initialized, SDL3 audio driver won't

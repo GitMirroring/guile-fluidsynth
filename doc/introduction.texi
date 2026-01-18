@@ -1,6 +1,6 @@
 @c -*- mode: texinfo; coding: utf-8 -*-
 @c This is part of the Guile-Fluidsynth Reference Manual.
-@c Copyright (C) 2025 - David Pirotte (david at altosw dot be)
+@c Copyright (C) 2025 - 2026 - David Pirotte (david at altosw dot be)
 @c See the file guile-fluidsynth.texi for copying conditions.
 
 
@@ -29,9 +29,9 @@ fluidsynth} library
 
 @subheading Description
 
-There is not much else to say, @uref{@value{UGUILE-FLUIDSYNTH},
-Guile-Fluidsynth} is a @uref{@value{UGUILE}, Guile Scheme} bindings
-library to the @uref{@value{UFLUIDSYNTH}, fluidsynth} library.
+@uref{@value{UGUILE-FLUIDSYNTH}, Guile-Fluidsynth} is a
+@uref{@value{UGUILE}, Guile Scheme} bindings library to the
+@uref{@value{UFLUIDSYNTH}, fluidsynth} library.
 
 
 @c @subheading Savannah
