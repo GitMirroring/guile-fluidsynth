@@ -1,6 +1,6 @@
 
 ####
-#### Copyright (C) 2025
+#### Copyright (C) 2025 - 2026
 #### David Pirotte (david at altosw dot be)
 
 #### This file is part of Guile-Fluidsynth
@@ -37,6 +37,10 @@ guile_fluidsynth_TEXINFOS = \
 	preface.texi     		\
 	introduction.texi		\
 	using-guile-fluidsynth.texi	\
+	cr-overview.texi		\
+	cr-f-synth-synth.texi		\
+	cr-f-synth.texi			\
+	cr.texi				\
 	indices.texi			\
 	fdl.texi			\
 	$(DOC_CSS)
