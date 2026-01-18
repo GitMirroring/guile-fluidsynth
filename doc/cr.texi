@@ -6,7 +6,7 @@
 
 @node Guile-Fluidsynth Reference Manual
 @c @chapter Guile-Fluidsynth Reference Manual
-@unnumbered II. Guile-Fluidsynth Reference Manual
+@unnumbered III. Guile-Fluidsynth Reference Manual
 
 
 @menu
