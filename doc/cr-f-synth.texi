@@ -25,7 +25,7 @@ of the following modules:
 For a complete documentation of the @code{(oop goops)} module,
 @pxref{GOOPS,,, guile, The GNU Guile Reference Manual}.
 
-For support modules, visit the @ref{Support} section.
+@c For support modules, visit the @ref{Support} section.
 
 
 @include cr-f-synth-synth.texi

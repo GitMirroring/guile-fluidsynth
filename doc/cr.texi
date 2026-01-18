@@ -12,10 +12,10 @@
 @menu
 * Overview::
 * F-Synth::
-* Support::
+@c * Support::
 @end menu
 
 
 @include cr-overview.texi
 @include cr-f-synth.texi
-@include cr-support.texi
+@c @include cr-support.texi
