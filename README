@@ -4,7 +4,7 @@
 
 #+BEGIN_COMMENT
 
-Copyright (C) 2025
+Copyright (C) 2025 - 2026
 David Pirotte (david at altosw dot be)
 
 This document is part of Guile-Fluidsynth.
@@ -31,16 +31,36 @@ Guile bindings to the fluidsynth library
 
 ** Description
 
-Guile-Fluidsynth
-Guile bindings to the fluidsynth library
+Guile-Fluidsynth is a Guile Scheme bindings library to the fluidsynth
+library.
+
+Assuming you have successfully installed guile-fluidfsynth, here is how
+to make a synthesizer and play a note. Fire your preferred guile
+session, then:
+
+#+BEGIN_SRC scheme{
+  scheme@(guile-user)> ,use (f-synth)
+  scheme@(guile-user)> (make <synth>)
+  ⇒ $5 = #<<synth> 7f746c768db0>
+
+  scheme@(guile-user)> (noteon $5 0 60 100)
+#+END_SRC
+
+If everything went well, it should have played a "Yamaha Grand Piano" C4
+(middle c) 261.63 Hz note.
+
+The (make <synth>) command may display of one or two warnings , which
+may safely be ignored. Please consult the documentation ("Using
+Guile-Fluidsynth", "Make a Synthesizer - Play a Note") for a complete
+description.
 
 ** Latest News
 
-October 2025
+Jnauary 2026
 
-Guile-Fluidsynth first steps
+Guile-Fluidsynth version 0.1.0 released.
 
-Visit the NEWS file or see the [[http://git.savannah.gnu.org/cgit/guile-cv.git/tree/NEWS][News]] page for the list of visible changes
+Visit the NEWS file or see the [[https://cgit.git.savannah.gnu.org/cgit/guile-fluidsynth.git/tree/NEWS][News]] page for the list of visible changes
 since the last release, as well as older news.
 
 ** Savannah

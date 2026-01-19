@@ -4,7 +4,7 @@
 
 #+BEGIN_COMMENT
 
-Copyright (C) 2025
+Copyright (C) 2025 - 2026
 David Pirotte (david at altosw dot be)
 
 This document is part of Guile-Fluidsynth.
@@ -23,8 +23,6 @@ Guile bindings to the fluidsynth library
 
 ** Dependencies
 
-*** Main Dependencies
-
 Guile-Fluidsynth needs the following software to run:
 
 	Autoconf	>= 2.69
@@ -34,20 +32,95 @@ Guile-Fluidsynth needs the following software to run:
 	  [allows 2.2, 3.0 (>= 3.0.7)]
   FluidSynth	>= 2.4
 
-*** Test-Suite Dependencies
-
-Guile-Fluidsynth currently needs the following additional software to
-run its test-suite:
-          
-	[[http://www.nongnu.org/guile-lib/][Guile-Lib]]	>= 0.2.5
-
 ** Install from the tarball
 
-FIXME.
+Guile-Fluidsynth release are [[https://savannah.nongnu.org/files/?group=guile-fluidsynth][here]].  The latest tarballs are:
+
+	guile-fluidsynth-0.1.0.tar.gz
+	guile-fluidsynth-0.1.0.tar.gz.sig
+
+	[ GPG Key: A3057AD7
+	[ gpg --keyserver keys.gnupg.net --recv-keys A3057AD7
+
+Assuming you have satisfied the dependencies, open a terminal and
+proceed with the following steps:
+
+	cd <download-path>
+	tar zxf guile-fluidsynth-0.1.0.tar.gz
+	cd guile-fluidsynth-0.1.0
+	./configure [--prefix=/your/prefix] [--with-guile-site]
+	make
+	make install
+
+Happy Guile-Fluidsynth!
 
 ** Install from the source
 
-FIXME.
+Guile-Fluidsynth uses Git for revision control, hosted on Savannah, you
+may browse the sources repository [[https://git.savannah.nongnu.org/cgit/guile-fluidsynth.git][here]].
+
+So, to grab, compile and install from the source, open a terminal and:
+
+	git clone git://git.savannah.gnu.org/guile-fluidsynth.git
+	cd guile-fluidsynth
+	./autogen.sh
+	./configure [--prefix=/your/prefix] [--with-guile-site]
+	make
+	make install
+
+Happy hacking!
+
+** Notes
+
+[1] The default and --prefix installation locations for source modules
+    and compiled files (in the absence of --with-guile-site) are:
+
+      $(datadir)/guile-fluidsynth
+      $(libdir)/guile-fluidsynth/guile/$(GUILE_EFFECTIVE_VERSION)/site-ccache
+
+    If you pass --with-guile-site, these locations become:
+
+      Guile site directory
+      Guile site-ccache directory
+
+[2] The configure step reports these locations as the content of the
+    sitedir and siteccachedir variables.
+
+    After installation, you may consult these variables using
+    pkg-config:
+
+     pkg-config guile-fluidsynth-1.0 --variable=sitedir
+     pkg-config guile-fluidsynth-1.0 --variable=siteccachedir
+
+[3] Unless you have used --with-guile-site, or unless these locations
+    are already ’known’ by Guile, you will need to define or augment
+    your GUILE_LOAD_PATH and GUILE_COMPILED_PATH environment variables
+    accordingly (or %load-path and %load-compiled-path at run time if
+    you prefer (See Environment Variables and Load Path in the Guile
+    Reference Manual) [fn:1].
+
+[4] To install Guile-Fluidsynth, you must have write permissions to the
+    default or $(prefix) directory and its subdirs, as well as to both
+    Guile’s site and site-ccache directories if --with-guile-site was
+    passed [fn:2].
+
+[5] Like for any other GNU Tool Chain compatible software, you may
+    install the documentation locally using make install-info, make
+    install-html and/or make install-pdf.
+
+Footnotes:
+
+[fn:1] In this case, you may as well decide to either alter your
+       $HOME/.guile personal file, or, if you are working in a
+       multi-user environmet, you may also opt for a global
+       configuration. In this case, the file must be named init.scm and
+       placed it here (evaluate the following expression in a terminal):
+
+         guile -c "(display (%site-dir))(newline)"
+
+
+[fn:2] Contact your administrator if you opt for the second solution but
+       don’t have write priviledges on your system.
 
 
 * Other configure scripts options

@@ -4,7 +4,7 @@
 
 #+BEGIN_COMMENT
 
-Copyright (C) 2025
+Copyright (C) 2025 - 2026
 David Pirotte (david at altosw dot be)
 
 This document is part of Guile-Fluidsynth.
@@ -26,9 +26,23 @@ warranty.
 
 * Latest News
 
+** January 2026
+
+Guile-Fluidsynth version 0.1.0 is released.
+
+This is the first release, In summary, this release will let you:
+
+  - instantiate synthesizer
+  - play (unplay) a note
+  - listing soundfont programs
+  - selecting a soundfont program
+
+Please consult the documentation, which contains an introduction, a
+using guile-fluidsynth as well as a reference manual section, which
+describes the available commands.
+
+* Older News
+
 ** October 2025
 
 Guile-Fluidsynth first steps
-
-
-* Older News
