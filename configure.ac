@@ -6,7 +6,7 @@ dnl
 
 define(GUILE_FLUIDSYNTH_CONFIGURE_COPYRIGHT,[[
 
-Copyright (C) 2025
+Copyright (C) 2025 - 2026
 David Pirotte (david at altosw dot be)
 
 This file is part of Guile-Fluidsynth
@@ -57,8 +57,8 @@ GUILE_PKG([3.0 2.2 2.0])
 GUILE_PROGS([2.0.14])
 GUILE3_PROGS([3.0.7])
 GUILE_SITE_DIR
-GUILE_GLOBAL_SITE_DIR
-GUILE_FLAGS
+dnl GUILE_GLOBAL_SITE_DIR
+dnl GUILE_FLAGS
 PKG_INSTALLDIR
 
 
