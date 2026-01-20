@@ -93,13 +93,37 @@ fi
 AC_SUBST([SITEDIR])
 AC_SUBST([SITECCACHEDIR])
 
-
-PKG_CHECK_MODULES(FLUIDSYNTH, fluidsynth >= 2.4)
-
 # Although guile itself depends on libffi, we make this call to get
 # FFI_CFLAGS and FFI_LIBS to be defined, used by libtonic.
 # PKG_CHECK_MODULES(FFI, libffi >= 3.3.0)
 
+# Check for Nyacc
+# Copied from guile-mqtt
+#   https://github.com/mdjurfeldt/guile-mqtt
+#   Thanks to Mikael Djurfeldt, its author
+AC_MSG_CHECKING([for nyacc])
+have_nyacc=""
+NYACC_VERSION=`$GUILE -c '(display (@ (nyacc version) *nyacc-version*))' 2>/dev/null`
+if test $? = 1; then
+  if test ! -e $srcdir/module/mosquitto/foreign/cdata.scm; then
+    AC_MSG_ERROR([Nyacc is required but was not found. Please install Nyacc >= 3.00.0 and try again.])
+  fi
+  AC_MSG_RESULT(no)
+else
+  have_nyacc=1
+  AC_MSG_RESULT(yes)
+fi
+
+if test -n "$have_nyacc"; then
+AC_MSG_CHECKING([for nyacc version >= 3.00.0])
+if test "$NYACC_VERSION" \< "3.00.0" -a ! -e $srcdir/module/mosquitto/foreign/cdata.scm; then
+  AC_MSG_ERROR([The installed version of Nyacc is too old. Please install Nyacc >= 3.00.0.])
+fi
+AC_MSG_RESULT(yes)
+fi
+
+
+PKG_CHECK_MODULES(FLUIDSYNTH, fluidsynth >= 2.4)
 
 
 AC_CONFIG_FILES(

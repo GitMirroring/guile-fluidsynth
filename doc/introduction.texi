@@ -71,6 +71,8 @@ Makeinfo >= 6.6
 @item
 @c @uref{@value{UGUILE-LIB}, Guile-Lib} >= 0.2.5
 @item 
+@uref{@value{UNYACC}, Nyacc} >= 3.00.0
+@item
 @uref{@value{UFLUIDSYNTH}, Fluidsynth} >= 2.4
 
 @end itemize

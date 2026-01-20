@@ -55,3 +55,9 @@
 
 @set UFLUIDSYNTH https://github.com/FluidSynth/fluidsynth
 
+
+@c
+@c NYACC
+@c
+
+@set UNYACC https://github.com/mwette/nyacc.git
