@@ -28,6 +28,25 @@ warranty.
 
 ** January 2026
 
+Guile-Fluidsynth version 0.2.0 is released.
+
+*** Noteworthy changes in 0.2.0
+
+Here is a summary of the noteworthy changes in this release. See
+Guile-Fluidsynth [[https://git.savannah.nongnu.org/cgit/guile-fluidsynth.git][summary]] and [[https://git.savannah.nongnu.org/cgit/guile-fluidsynth.git/log][log]] for a complete list and description.
+
+**** Dependencies
+
+Fixing a missing dependency.
+
+***** Nyacc
+
+  Nyacc  >=  3.00.0
+
+* Older News
+
+** January 2026
+
 Guile-Fluidsynth version 0.1.0 is released.
 
 This is the first release, In summary, this release will let you:
@@ -40,8 +59,6 @@ This is the first release, In summary, this release will let you:
 Please consult the documentation, which contains an introduction, a
 using guile-fluidsynth as well as a reference manual section, which
 describes the available commands.
-
-* Older News
 
 ** October 2025
 

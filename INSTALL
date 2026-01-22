@@ -30,14 +30,15 @@ Guile-Fluidsynth needs the following software to run:
     Makeinfo	>= 6.6
 	[[http://www.gnu.org/software/guile][Guile]] 		>= 2.0.14
 	  [allows 2.2, 3.0 (>= 3.0.7)]
-  FluidSynth	>= 2.4
+    [[https://github.com/mwette/nyacc.git][Nyacc]]           >= 3.00.0
+    [[https://github.com/FluidSynth/fluidsynth][FluidSynth]]	>= 2.4
 
 ** Install from the tarball
 
 Guile-Fluidsynth release are [[https://savannah.nongnu.org/files/?group=guile-fluidsynth][here]].  The latest tarballs are:
 
-	guile-fluidsynth-0.1.0.tar.gz
-	guile-fluidsynth-0.1.0.tar.gz.sig
+	guile-fluidsynth-0.2.0.tar.gz
+	guile-fluidsynth-0.2.0.tar.gz.sig
 
 	[ GPG Key: A3057AD7
 	[ gpg --keyserver keys.gnupg.net --recv-keys A3057AD7
@@ -46,8 +47,8 @@ Assuming you have satisfied the dependencies, open a terminal and
 proceed with the following steps:
 
 	cd <download-path>
-	tar zxf guile-fluidsynth-0.1.0.tar.gz
-	cd guile-fluidsynth-0.1.0
+	tar zxf guile-fluidsynth-0.2.0.tar.gz
+	cd guile-fluidsynth-0.2.0
 	./configure [--prefix=/your/prefix] [--with-guile-site]
 	make
 	make install
