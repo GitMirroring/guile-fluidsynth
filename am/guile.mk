@@ -1,6 +1,6 @@
 
 ####
-#### Copyright (C) 2025
+#### Copyright (C) 2025 - 2026
 #### David Pirotte (david at altosw dot be)
 
 #### This file is part of Guile-Fluidsynth
@@ -47,5 +47,5 @@ GUILE_WARNINGS = -Wunbound-variable -Warity-mismatch -Wformat
 
 SUFFIXES = .scm .go
 .scm.go:
-	$(AM_V_GEN)$(top_builddir)/pre-inst-env \
+	$(AM_V_GEN) $(top_builddir)/pre-inst-env \
 	$(GUILD) compile $(GUILE_WARNINGS) $(GUILE_TARGET) -o "$@" "$<"
