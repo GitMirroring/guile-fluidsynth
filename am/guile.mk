@@ -21,14 +21,29 @@
 ####
 
 
-moddir=@SITEDIR@
-godir=@SITECCACHEDIR@
+moddir = $(SITEDIR)
+godir = $(SITECCACHEDIR)
 
 
-GOBJECTS = $(SOURCES:%.scm=%.go)
+FFI_SCM = \
+	$(FFI_SOURCES:%.ffi=%.scm)
 
-nobase_mod_DATA = $(SOURCES) $(NOCOMP_SOURCES)
-nobase_go_DATA = $(GOBJECTS)
+SUFFIXES = .ffi .scm
+.ffi.scm:
+	cd `dirname $<`
+	$(GUILD) compile-ffi "$<"
+
+FFI_GOBJECTS = \
+	$(FFI_SCM:%.scm=%.go)
+
+
+GOBJECTS = \
+	$(SOURCES:%.scm=%.go)
+
+
+nobase_mod_DATA = $(FFI_SOURCES) $(FFI_SCM) $(SOURCES)
+nobase_go_DATA = $(FFI_GOBJECTS) $(GOBJECTS)
+
 
 AM_CFLAGS = -I. -I$(srcdir) $(WARN_CFLAGS) $(DEBUG_CFLAGS)
 

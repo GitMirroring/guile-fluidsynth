@@ -1,6 +1,6 @@
 
 ####
-#### Copyright (C) 2025
+#### Copyright (C) 2025 - 2026
 #### David Pirotte (david at altosw dot be)
 
 #### This file is part of Guile-Fluidsynth
@@ -23,8 +23,14 @@
 
 include $(top_srcdir)/am/guile.mk
 
+
 pkgconfigdir=$(libdir)/pkgconfig
 pkgconfig_DATA=meta/guile-fluidsynth-1.0.pc
+
+
+FFI_SOURCES = \
+	$(wildcard f-synth/ffi/*.ffi)
+
 
 SOURCES = \
 	f-synth/support/module.scm	\
@@ -33,19 +39,12 @@ SOURCES = \
 	f-synth/support/stow.scm	\
 	f-synth/support/utils.scm	\
 	f-synth/support.scm		\
-	f-synth/ffi/types.scm		\
-	f-synth/ffi/settings.scm	\
-	f-synth/ffi/synth.scm		\
-	f-synth/ffi/audio.scm		\
-	f-synth/ffi/sfont.scm		\
 	f-synth/ffi.scm			\
 	f-synth/defaults.scm		\
 	f-synth/synth.scm		\
 	f-synth-dev.scm			\
 	f-synth.scm
 
-NOCOMP_SOURCES= \
-	$(wildcard f-synth/ffi/*.ffi)
 
 EXTRA_DIST = \
 	AUTHORS				\
@@ -62,21 +61,26 @@ EXTRA_DIST = \
 	$(wildcard am/*)		\
 	$(wildcard m4/*)		\
 	$(SOURCES)			\
-	$(NOCOMP_SOURCES)
+	$(FFI_SOURCES)
 
 # bin_SCRIPTS = cv/cv
 
+
 CLEANFILES = \
 	meta/guile-fluidsynth-1.0.pc	\
+	$(FFI_SCM)			\
+	$(FFI_GOBJECTS	)		\
 	$(GOBJECTS)
 # 	$(bin_SCRIPTS)
 
+
 ETAGS_ARGS = \
-	$(SOURCES)
+	$(SOURCES)	\
+	$(FFI_SCM)
+
 
 SUBDIRS = \
-	doc		\
-	f-synth/ffi
+	doc
 #	test-suite
 
 
