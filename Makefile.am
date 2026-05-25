@@ -75,7 +75,8 @@ ETAGS_ARGS = \
 	$(SOURCES)
 
 SUBDIRS = \
-	doc
+	doc		\
+	f-synth/ffi
 #	test-suite
 
 
