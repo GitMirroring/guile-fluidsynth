@@ -16,6 +16,7 @@ config.status
 configure
 pre-inst-env
 f-synth/ffi/*.scm
+guile-fluidsynth-*/
 guile-fluidsynth-*.tar.gz
 guile-fluidsynth-*.tar.gz.sig
 /Makefile
