@@ -21,8 +21,8 @@
 ####
 
 
-ffimoddir = $(SITEDIR)
-ffigodir = $(SITECCACHEDIR)
+ffimoddir = $(SITEDIR)/f-synth/ffi
+ffigodir = $(SITECCACHEDIR)/f-synth/ffi
 
 
 FFI_SOURCES = \
