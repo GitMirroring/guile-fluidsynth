@@ -28,10 +28,6 @@ pkgconfigdir=$(libdir)/pkgconfig
 pkgconfig_DATA=meta/guile-fluidsynth-1.0.pc
 
 
-FFI_SOURCES = \
-	$(wildcard f-synth/ffi/*.ffi)
-
-
 SOURCES = \
 	f-synth/support/module.scm	\
 	f-synth/support/goops.scm	\
@@ -60,32 +56,27 @@ EXTRA_DIST = \
 	meta/guile-fluidsynth-1.0.pc.in	\
 	$(wildcard am/*)		\
 	$(wildcard m4/*)		\
-	$(SOURCES)			\
-	$(FFI_SOURCES)
+	$(SOURCES)
 
 # bin_SCRIPTS = cv/cv
 
 
 CLEANFILES = \
 	meta/guile-fluidsynth-1.0.pc	\
-	$(FFI_SCM)			\
-	$(FFI_GOBJECTS	)		\
 	$(GOBJECTS)
 # 	$(bin_SCRIPTS)
 
 
 ETAGS_ARGS = \
-	$(SOURCES)	\
-	$(FFI_SCM)
+	$(SOURCES)
 
 
 SUBDIRS = \
-	doc
+	doc		\
+	f-synth
 #	test-suite
 
 
 ACLOCAL_AMFLAGS = -I m4
 
 # * .PHONY: gen-pof:
-
-# Makefile.am ends here

@@ -126,6 +126,8 @@ AC_CONFIG_FILES(
 AC_CONFIG_FILES([
   meta/guile-fluidsynth-1.0.pc
   Makefile
+  f-synth/Makefile
+  f-synth/ffi/Makefile
   doc/Makefile
 ])
 

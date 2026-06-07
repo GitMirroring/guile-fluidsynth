@@ -20,6 +20,8 @@ guile-fluidsynth-*/
 guile-fluidsynth-*.tar.gz
 guile-fluidsynth-*.tar.gz.sig
 /Makefile
+f-synth/Makefile
+f-synth/ffi/Makefile
 doc/Makefile
 test-suite/Makefile
 Makefile.in
