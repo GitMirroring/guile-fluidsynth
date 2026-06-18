@@ -73,8 +73,8 @@ ETAGS_ARGS = \
 
 SUBDIRS = \
 	doc		\
-	f-synth
-#	test-suite
+	f-synth		\
+	test-suite
 
 
 ACLOCAL_AMFLAGS = -I m4

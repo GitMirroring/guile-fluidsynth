@@ -129,17 +129,11 @@ AC_CONFIG_FILES([
   f-synth/Makefile
   f-synth/ffi/Makefile
   doc/Makefile
+  test-suite/Makefile
 ])
 
-#AC_CONFIG_FILES([
-#  meta/guile-cv-1.0.pc
-#  Makefile
-#  libguile-cv/Makefile
-#  doc/Makefile
-#  test-suite/Makefile
-#])
-
 AC_OUTPUT
+
 
 AC_MSG_NOTICE(
   []
